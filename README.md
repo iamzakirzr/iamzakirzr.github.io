@@ -1,7 +1,7 @@
 <h1 align="left">Mohamed Zakir Hussain</h1>
 
 <p align="left">
-  <strong>Sr SDET &middot; AI Quality Engineering</strong><br>
+  <strong>Senior SDET · AI Quality Engineering</strong><br>
   Senior QA Engineer · Software Engineer 2 at IQVIA
 </p>
 
@@ -13,18 +13,17 @@
 
 ---
 
-8.5 years of test automation across healthcare and life sciences platforms at **IQVIA**,
-**Mindtree** and **Indium Software**. I build the frameworks that let teams trust their
-regression suites — and, increasingly, the evaluation harnesses that decide whether an
-LLM-driven feature is fit to ship.
+8.5 years of test automation across healthcare and life sciences at IQVIA, Mindtree and
+Indium Software. I build the frameworks teams rely on to trust their regression suites, and
+lately the evaluation harnesses that decide whether an LLM feature is fit to ship.
 
-- 🧪 **Now** — quality engineering for LLM, RAG and agentic AI systems: faithfulness,
+- 🧪 **Now** · quality engineering for LLM, RAG and agentic AI systems: faithfulness,
   context precision, hallucination rate, tool-calling accuracy, prompt-injection probing
-- 🏗️ **Frameworks** — Playwright, Selenium, Cypress, AccelQ and Squish suites in Python
-  and C#, wired into Azure DevOps so regression runs daily instead of pre-release
-- 📉 **Impact** — cut regression execution time 75%, shortened the release feedback loop
-  40%, lifted automation coverage 25%
-- 👥 **Team** — lead five QA engineers across Scrum, Kanban and Waterfall delivery
+- 🏗️ **Frameworks** · Playwright, Selenium, Cypress, AccelQ and Squish in Python and C#,
+  wired into Azure DevOps so regression runs daily instead of pre-release
+- 📉 **Impact** · regression execution time down 75%, release feedback loop 40% faster,
+  automation coverage up 25%
+- 👥 **Team** · five QA engineers, across Scrum, Kanban and Waterfall
 
 ### Tools of the trade
 
@@ -44,56 +43,36 @@ LLM-driven feature is fit to ship.
 
 ---
 
-## About this repository
+## This repo
 
-This is the source of **[iamzakirzr.github.io](https://iamzakirzr.github.io/)** — hand-written
-HTML with an inline stylesheet. No framework, no npm, no build step, no Jekyll. Open
-`index.html` in a browser and that is the whole thing.
+Source for [iamzakirzr.github.io](https://iamzakirzr.github.io/). Plain HTML and CSS in a
+single file, no framework and no build step. Clone it and open `index.html`.
 
 ```
-index.html                       the page (content + styles + ~25 lines of scroll-spy JS)
-assets/og-image.png              1200x630 link preview card for LinkedIn / X / Slack
-assets/favicon.svg
-robots.txt                       allows everything, points at the sitemap
+index.html      page, styles, and a small scroll-spy script
+assets/         photo, link-preview card, favicon
+robots.txt
 sitemap.xml
-.nojekyll                        tells GitHub Pages to serve the files as-is
+.nojekyll
 ```
 
-### Layout
+### Notes to self
 
-Two columns above 1024px: a sticky left column (name, title, availability, nav, socials)
-beside a scrolling right column. Below 1024px it collapses to one column and the nav
-detaches into a fixed bottom bar. Scroll-spy marks the active nav link via
-`IntersectionObserver`; with JavaScript off the links are still plain anchors.
+Two columns above 1024px, sticky left column beside the scrolling content. Under that it
+stacks and the nav moves to a fixed bar at the bottom. Colours are CSS variables on
+`:root`, so a palette change is one block.
 
-### The photo
+Sections in `index.html` run in the order they appear on the page: `#about`, `#impact`,
+`#ai`, `#experience`, `#work`, `#recognition`, `#contact`. The JSON-LD at the bottom repeats
+the same facts, so update both together.
 
-`assets/photo.jpg` is a 352×352 crop (4× the 88px slot) taken from a full-body source
-photo: region 660×660 at offset 575,66 of the 2576×1450 original, framed so the head fills
-about 64% of the circle with the eyes near the upper third. The same face appears on
-`assets/og-image.png`.
+The hero panel lists the metrics I evaluate against, not scores. Any number that goes on
+this page has to be one I can back when someone asks how I measured it.
 
-Replacing it: crop square, keep the head around 60–70% of the frame height, export at 352px
-or larger, and remember the page renders it as an 88px circle — corners are discarded, so
-centre the face. A photo without sunglasses would read better at that size; eyes are the
-only feature that survives a thumbnail.
+No phone number, no address, no CV to download. The page is public and gets crawled, so
+contact runs through email.
 
-### Editing
-
-Everything lives in `index.html` in document order: `<head>` metadata, one `<style>` block,
-the left column, then the right-column sections (`#about`, `#impact`, `#ai`, `#experience`,
-`#work`, `#recognition`, `#contact`), then the scroll-spy script and JSON-LD. Colours are
-CSS custom properties on `:root`.
-
-The hero panel lists the evaluation metrics the work is measured against — not results.
-Every figure on the page is one Zakir states on his own résumé; nothing is estimated,
-illustrative, or placeholder. Keep it that way: if a number goes on this page, it should be
-one that survives being asked "how did you measure that?"
-
-The page deliberately omits a phone number, a location, and a downloadable résumé PDF,
-since it is public and crawlable; the contact section uses a `mailto:` with a "Request
-résumé" subject instead.
-
-`assets/og-image.png` is a screenshot of a small HTML card rendered at exactly 1200×630.
-LinkedIn needs a raster image and caches aggressively, so validate any replacement with
-LinkedIn's Post Inspector.
+The avatar is a square crop rendered as an 88px circle, so keep the face centred and export
+at 352px or better. `assets/og-image.png` is the LinkedIn preview at 1200x630; LinkedIn
+caches it hard, so run any replacement through Post Inspector before sharing the link
+again.
