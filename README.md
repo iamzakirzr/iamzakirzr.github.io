@@ -13,9 +13,10 @@
 
 ---
 
-8.5 years of test automation across healthcare and life sciences at IQVIA, Mindtree and
-Indium Software. I build the frameworks teams rely on to trust their regression suites, and
-lately the evaluation harnesses that decide whether an LLM feature is fit to ship.
+Test automation across healthcare and life sciences at IQVIA, Mindtree and Indium
+Software since 2018. I build the frameworks teams rely on to trust their regression
+suites, and lately the evaluation harnesses that decide whether an LLM feature is fit
+to ship.
 
 - 🧪 **Now** · quality engineering for LLM, RAG and agentic AI systems: faithfulness,
   context precision, hallucination rate, tool-calling accuracy, prompt-injection probing
