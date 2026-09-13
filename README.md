@@ -1,7 +1,7 @@
 <h1 align="left">Mohamed Zakir Hussain</h1>
 
 <p align="left">
-  <strong>AI Quality Engineering &amp; Test Automation Lead</strong><br>
+  <strong>Sr SDET &middot; AI Quality Engineering</strong><br>
   Senior QA Engineer · Software Engineer 2 at IQVIA
 </p>
 
