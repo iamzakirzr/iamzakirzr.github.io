@@ -52,13 +52,10 @@ HTML with an inline stylesheet. No framework, no npm, no build step, no Jekyll. 
 
 ```
 index.html                       the page (content + styles + ~25 lines of scroll-spy JS)
-case-studies/llm-eval.html       draft — noindex, not linked from the portfolio
-case-studies/surgimap.html       draft — noindex, not linked
-case-studies/ci-regression.html  draft — noindex, not linked
 assets/og-image.png              1200x630 link preview card for LinkedIn / X / Slack
 assets/favicon.svg
 robots.txt                       allows everything, points at the sitemap
-sitemap.xml                      the homepage only; case studies excluded while unpublished
+sitemap.xml
 .nojekyll                        tells GitHub Pages to serve the files as-is
 ```
 
@@ -68,27 +65,6 @@ Two columns above 1024px: a sticky left column (name, title, availability, nav, 
 beside a scrolling right column. Below 1024px it collapses to one column and the nav
 detaches into a fixed bottom bar. Scroll-spy marks the active nav link via
 `IntersectionObserver`; with JavaScript off the links are still plain anchors.
-
-### Pending — things only Zakir can supply
-
-1. **Metric baselines.** The impact grid shows bare percentages. A before→after pair is a
-   much stronger claim. Each tile carries a `TODO(zakir)` comment with the markup:
-   `<div class="metric-value"><span class="from">4h</span> <span class="arrow">→</span> 1h</div>`
-2. **Case-study detail.** Each draft has amber `[Needs Zakir: …]` blocks marking the
-   judgement calls — why those test cases, what was traded off, what the outcome was, what
-   you'd change. Those are the parts that make it a case study rather than a project blurb.
-3. **The illustrative eval scores.** The hero terminal is labelled as a sample because the
-   numbers in it are not measured. Real numbers from the IQVIA chatbot work would be
-   stronger than any label — swap them in if they're shareable.
-
-### Publishing the case studies
-
-Once the `[Needs Zakir: …]` blocks in a page are filled:
-
-1. Delete that page's `<meta name="robots" content="noindex, nofollow">`.
-2. In `index.html`, uncomment the `PUBLISH STEP: case studies` block and add a
-   `case studies` link to the nav.
-3. Add the page's URL to `sitemap.xml`.
 
 ### The photo
 
@@ -107,8 +83,12 @@ only feature that survives a thumbnail.
 Everything lives in `index.html` in document order: `<head>` metadata, one `<style>` block,
 the left column, then the right-column sections (`#about`, `#impact`, `#ai`, `#experience`,
 `#work`, `#recognition`, `#contact`), then the scroll-spy script and JSON-LD. Colours are
-CSS custom properties on `:root`. The case-study pages copy the same `<style>` block — a
-palette change has to be applied to all four files.
+CSS custom properties on `:root`.
+
+The hero panel lists the evaluation metrics the work is measured against — not results.
+Every figure on the page is one Zakir states on his own résumé; nothing is estimated,
+illustrative, or placeholder. Keep it that way: if a number goes on this page, it should be
+one that survives being asked "how did you measure that?"
 
 The page deliberately omits a phone number, a location, and a downloadable résumé PDF,
 since it is public and crawlable; the contact section uses a `mailto:` with a "Request

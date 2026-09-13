@@ -71,7 +71,7 @@
 
   /* ---------- LEFT COLUMN ---------- */
   .side{
-    position:sticky;top:0;align-self:start;
+    position:sticky;top:0;align-self:start;min-width:0;
     min-height:100vh;display:flex;flex-direction:column;justify-content:center;
     padding-block:64px;
   }
@@ -120,7 +120,7 @@
   .socials a.primary:hover{background:#4BE8AB;color:#08101A;}
 
   /* ---------- RIGHT COLUMN ---------- */
-  .content{padding-block:64px;max-width:640px;}
+  .content{padding-block:64px;max-width:640px;min-width:0;}
   section{padding-block:44px;border-top:1px solid var(--border);}
   section:first-of-type{border-top:none;padding-top:0;}
   .eyebrow{font-family:var(--mono);font-size:11.5px;color:var(--pass);display:flex;align-items:center;gap:8px;margin-bottom:9px;}
@@ -136,16 +136,12 @@
   .terminal-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0F161F;border-bottom:1px solid var(--border);}
   .terminal-bar i{width:9px;height:9px;border-radius:50%;background:#37424F;flex:none;}
   .terminal-bar .label{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--text-dim);}
-  .terminal-bar .tag{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--amber);border:1px solid var(--amber-dim);border-radius:20px;padding:2px 8px;white-space:nowrap;}
   .terminal-body{padding:18px 16px 20px;font-family:var(--mono);font-size:12.5px;overflow-x:auto;}
   .terminal-line{color:var(--text-dim);margin-bottom:6px;opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;}
   .terminal-line .cmd{color:var(--text);}
-  .terminal-note{color:var(--amber);margin-bottom:9px;opacity:0;animation:fadeIn .5s forwards;font-size:11.5px;}
-  .test-item{display:flex;align-items:center;gap:10px;margin:5px 0;opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;}
-  .test-item .check{color:var(--pass);font-weight:600;flex:none;}
-  .test-item .name{color:var(--text);}
-  .test-item .score{margin-left:auto;color:var(--pass);font-size:11.5px;padding-left:14px;}
-  .test-item .score.dim{color:var(--text-dim);}
+  .yaml-line{display:flex;gap:14px;margin:5px 0;opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;}
+  .yaml-line .key{color:var(--pass);min-width:22ch;}
+  .yaml-line .note{color:var(--text-dim);}
   .terminal-sum{color:var(--pass);margin-top:10px;opacity:0;animation:fadeIn .5s forwards;font-size:12px;}
   @keyframes fadeIn{to{opacity:1;}}
 
@@ -191,9 +187,6 @@
   .ai-card h3{font-family:var(--display);font-size:15.5px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:9px;}
   .ai-card h3::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--ai);flex:none;}
   .ai-card p{color:var(--text-dim);font-size:14px;margin-bottom:12px;}
-  a.ai-card{display:block;transition:border-color .15s ease;}
-  a.ai-card:hover{border-color:var(--pass);}
-  a.ai-card p:last-child{margin-bottom:0;}
   .tags{display:flex;flex-wrap:wrap;gap:6px;}
   .tags span{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);background:var(--bg-raised);padding:3px 9px;border-radius:4px;border:1px solid var(--border);}
 
@@ -269,8 +262,9 @@
   }
   @media(max-width:430px){
     .terminal-body{font-size:11px;padding:16px 13px 18px;}
-    .test-item .score{font-size:10.5px;padding-left:10px;}
-    .terminal-sum,.terminal-note{font-size:10.5px;}
+    .yaml-line{flex-direction:column;gap:1px;white-space:normal;margin:8px 0;}
+    .yaml-line .key{min-width:0;}
+    .terminal-sum{font-size:10.5px;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -289,7 +283,7 @@
     <img class="photo" src="assets/photo.jpg" width="88" height="88" alt="Mohamed Zakir Hussain" loading="eager" decoding="async">
     <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>zakir.qa</a>
     <h1>Mohamed Zakir Hussain</h1>
-    <p class="role">Sr SDET &middot;<br>AI Quality Engineering</p>
+    <p class="role">Sr SDET<br>AI Quality Engineering</p>
     <p class="pitch">I make AI systems prove they work. 8.5 years of test automation across healthcare and life sciences, now building the evaluation harnesses that decide whether an LLM feature is fit to ship.</p>
     <span class="avail"><i aria-hidden="true"></i>Open to opportunities</span>
 
@@ -311,22 +305,20 @@
 
   <main class="content" id="main">
 
-    <section id="intro" aria-label="Evaluation sample">
+    <section id="intro" aria-label="Evaluation metrics">
       <div class="terminal">
         <div class="terminal-bar">
           <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-          <div class="label">sample_eval_run.py</div>
-          <div class="tag">illustrative</div>
+          <div class="label">evals/metrics.yaml</div>
         </div>
         <div class="terminal-body">
-          <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">pytest evals/ --metrics=ragas,deepeval</span></div>
-          <div class="terminal-note" style="animation-delay:.2s"># sample output &mdash; the metric set I work with, not client data</div>
-          <div class="test-item" style="animation-delay:.35s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">faithfulness</span><span class="score">0.94</span></div>
-          <div class="test-item" style="animation-delay:.5s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">context precision</span><span class="score">0.91</span></div>
-          <div class="test-item" style="animation-delay:.65s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">answer relevance</span><span class="score">0.93</span></div>
-          <div class="test-item" style="animation-delay:.8s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">tool&#8209;calling accuracy</span><span class="score">0.97</span></div>
-          <div class="test-item" style="animation-delay:.95s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">hallucination rate</span><span class="score dim">under threshold</span></div>
-          <div class="terminal-sum" style="animation-delay:1.15s">5 passed &middot; sample run</div>
+          <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">cat evals/metrics.yaml</span></div>
+          <div class="yaml-line" style="animation-delay:.3s"><span class="key">faithfulness</span><span class="note"># answer grounded in retrieved context</span></div>
+          <div class="yaml-line" style="animation-delay:.45s"><span class="key">context_precision</span><span class="note"># retrieval surfaced the right material</span></div>
+          <div class="yaml-line" style="animation-delay:.6s"><span class="key">answer_relevance</span><span class="note"># addresses the question actually asked</span></div>
+          <div class="yaml-line" style="animation-delay:.75s"><span class="key">tool_calling_accuracy</span><span class="note"># right tool, right arguments</span></div>
+          <div class="yaml-line" style="animation-delay:.9s"><span class="key">hallucination_rate</span><span class="note"># ungrounded claims per response</span></div>
+          <div class="terminal-sum" style="animation-delay:1.1s">thresholds enforced in CI &mdash; a drop fails the build</div>
         </div>
       </div>
 
@@ -356,9 +348,6 @@
       <div class="eyebrow">eval report</div>
       <h2>Where the needle moved</h2>
       <div class="metrics-grid">
-        <!-- TODO(zakir): baseline pairs. Replace a single value with:
-             <div class="metric-value"><span class="from">4h</span> <span class="arrow">&rarr;</span> 1h</div>
-             A before&rarr;after pair is far stronger than a bare percentage. -->
         <div class="metric">
           <div class="metric-label">Regression execution time</div>
           <div class="metric-value">&minus;75%</div>
@@ -459,23 +448,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ==========================================================================
-         PUBLISH STEP: case studies.
-         Three drafts exist at case-studies/*.html. Each carries <meta name="robots"
-         content="noindex"> and visible [Needs Zakir: ...] blocks.
-         To publish: fill every TODO in those files, remove their noindex tag, then
-         uncomment this section and add a "case studies" link to the nav above.
-    <section id="case-studies">
-      <div class="eyebrow">case studies</div>
-      <h2>Three problems, in detail</h2>
-      <div class="ai-grid">
-        <a class="ai-card" href="case-studies/llm-eval.html"><h3>Evaluating a production RAG assistant</h3><p>Golden datasets, scored thresholds, and what it takes to fail a build on a quality regression.</p></a>
-        <a class="ai-card" href="case-studies/surgimap.html"><h3>One suite, three operating systems</h3><p>A POM framework over Squish and BDD covering Windows, macOS and iOS from a single codebase.</p></a>
-        <a class="ai-card" href="case-studies/ci-regression.html"><h3>Moving regression off the critical path</h3><p>From pre-release crunch to a daily Azure DevOps run the team actually trusts.</p></a>
-      </div>
-    </section>
-         ========================================================================== -->
 
     <section id="work">
       <div class="eyebrow">selected work</div>
