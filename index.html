@@ -38,7 +38,7 @@
     --text-dim:#94A2B4;
     --pass:#35D399;
     --pass-dim:#1E5A44;
-    --pass-glow:rgba(53,211,153,0.35);
+    --pass-glow:rgba(53,211,153,.35);
     --ai:#A78BFA;
     --ai-dim:#453371;
     --amber:#E8A33D;
@@ -48,18 +48,13 @@
     --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;scroll-padding-top:76px;}
+  html{scroll-behavior:smooth;scroll-padding-top:28px;}
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg);color:var(--text);font-family:var(--body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none;}
   :focus-visible{outline:2px solid var(--pass);outline-offset:3px;border-radius:3px;}
-  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
 
   .skip{
     position:absolute;left:-9999px;top:0;z-index:100;
@@ -68,540 +63,531 @@
   }
   .skip:focus{left:0;}
 
-  /* NAV */
-  nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(13,19,27,0.97);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px;flex-wrap:wrap;padding-block:10px;}
-  .nav-logo{font-family:var(--mono);font-size:14px;color:var(--pass);display:flex;align-items:center;gap:8px;font-weight:500;}
-  .nav-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--pass);box-shadow:0 0 8px var(--pass-glow);flex:none;}
-  .nav-links{display:flex;gap:22px;font-family:var(--mono);font-size:13px;color:var(--text-dim);flex-wrap:wrap;}
-  .nav-links a{transition:color .15s ease;}
-  .nav-links a:hover{color:var(--pass);}
-  @media(max-width:620px){
-    .nav-links{gap:14px;font-size:11.5px;width:100%;}
-    nav .wrap{min-height:0;gap:8px;}
+  /* ---------- SHELL ---------- */
+  .shell{
+    max-width:1180px;margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:minmax(300px,40%) 1fr;gap:54px;
   }
 
-  /* HERO */
-  .hero{padding:64px 0 52px;}
-  .hero-grid{display:grid;grid-template-columns:1fr 232px;gap:38px;align-items:center;}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr 200px;gap:28px;}}
-  @media(max-width:760px){
-    .hero-grid{grid-template-columns:1fr;gap:0;}
-    .scorecard-wrap{display:none;}
+  /* ---------- LEFT COLUMN ---------- */
+  .side{
+    position:sticky;top:0;align-self:start;
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding-block:64px;
   }
-  .scorecard-wrap{position:relative;}
-  .float{animation:float 5s ease-in-out infinite;}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  .scorecard-badge{
-    position:absolute;top:-8px;right:-4px;z-index:2;
-    background:var(--pass);color:#08101A;
-    font-family:var(--mono);font-size:11px;font-weight:600;
-    padding:4px 11px;border-radius:20px;
-    box-shadow:0 4px 16px var(--pass-glow);
+  .logo{font-family:var(--mono);font-size:13px;color:var(--pass);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;}
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--pass);box-shadow:0 0 8px var(--pass-glow);flex:none;}
+  .photo{
+    width:88px;height:88px;border-radius:50%;margin-bottom:22px;
+    border:2px solid var(--border);object-fit:cover;display:block;background:var(--card);
   }
+  .side h1{
+    font-family:var(--display);font-size:clamp(30px,3.4vw,42px);font-weight:700;
+    line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;
+  }
+  .role{font-family:var(--display);font-size:18px;font-weight:600;color:var(--pass);margin-bottom:16px;}
+  .pitch{font-size:15px;color:var(--text-dim);max-width:380px;margin-bottom:22px;}
+  .avail{
+    display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+    font-family:var(--mono);font-size:11.5px;color:var(--pass);
+    background:rgba(53,211,153,.07);border:1px solid var(--pass-dim);
+    padding:5px 12px;border-radius:20px;margin-bottom:34px;
+  }
+  .avail i{width:6px;height:6px;border-radius:50%;background:var(--pass);flex:none;box-shadow:0 0 7px var(--pass-glow);}
 
+  .nav-links{display:flex;flex-direction:column;gap:13px;font-family:var(--mono);font-size:12.5px;margin-bottom:34px;}
+  .nav-links a{
+    color:var(--text-dim);display:inline-flex;align-items:center;gap:10px;
+    transition:color .15s ease;width:max-content;
+  }
+  .nav-links a::before{
+    content:"";width:22px;height:1px;background:var(--border);
+    transition:width .18s ease,background .18s ease;flex:none;
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a:hover::before{width:38px;background:var(--text-dim);}
+  .nav-links a[aria-current="true"]{color:var(--pass);}
+  .nav-links a[aria-current="true"]::before{width:44px;background:var(--pass);}
+
+  .socials{display:flex;gap:10px;flex-wrap:wrap;}
+  .socials a{
+    font-family:var(--mono);font-size:12px;color:var(--text);
+    border:1px solid var(--border);border-radius:6px;padding:8px 14px;
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .socials a:hover{border-color:var(--pass);color:var(--pass);}
+  .socials a.primary{background:var(--pass);color:#08101A;border-color:var(--pass);font-weight:600;}
+  .socials a.primary:hover{background:#4BE8AB;color:#08101A;}
+
+  /* ---------- RIGHT COLUMN ---------- */
+  .content{padding-block:64px;max-width:640px;}
+  section{padding-block:44px;border-top:1px solid var(--border);}
+  section:first-of-type{border-top:none;padding-top:0;}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;color:var(--pass);display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+  .eyebrow::before{content:"\25B8";}
+  .eyebrow.ai{color:var(--ai);}
+  h2{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);font-weight:600;margin-bottom:22px;letter-spacing:-.012em;line-height:1.25;}
+
+  /* terminal */
   .terminal{
-    background:var(--bg-raised);
-    border:1px solid var(--border);
-    border-radius:10px;
-    overflow:hidden;
-    margin-bottom:28px;
-    box-shadow:0 22px 60px -22px rgba(0,0,0,.65);
+    background:var(--bg-raised);border:1px solid var(--border);border-radius:10px;
+    overflow:hidden;box-shadow:0 22px 60px -22px rgba(0,0,0,.65);
   }
-  .terminal-bar{
-    display:flex;align-items:center;gap:8px;
-    padding:10px 14px;
-    background:#0F161F;
-    border-bottom:1px solid var(--border);
-  }
+  .terminal-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0F161F;border-bottom:1px solid var(--border);}
   .terminal-bar i{width:9px;height:9px;border-radius:50%;background:#37424F;flex:none;}
   .terminal-bar .label{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--text-dim);}
+  .terminal-bar .tag{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--amber);border:1px solid var(--amber-dim);border-radius:20px;padding:2px 8px;white-space:nowrap;}
   .terminal-body{padding:18px 16px 20px;font-family:var(--mono);font-size:12.5px;overflow-x:auto;}
   .terminal-line{color:var(--text-dim);margin-bottom:6px;opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;}
   .terminal-line .cmd{color:var(--text);}
-  .test-item{
-    display:flex;align-items:center;gap:10px;margin:5px 0;
-    opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;
-  }
+  .terminal-note{color:var(--amber);margin-bottom:9px;opacity:0;animation:fadeIn .5s forwards;font-size:11.5px;}
+  .test-item{display:flex;align-items:center;gap:10px;margin:5px 0;opacity:0;animation:fadeIn .5s forwards;white-space:nowrap;}
   .test-item .check{color:var(--pass);font-weight:600;flex:none;}
   .test-item .name{color:var(--text);}
   .test-item .score{margin-left:auto;color:var(--pass);font-size:11.5px;padding-left:14px;}
   .test-item .score.dim{color:var(--text-dim);}
   .terminal-sum{color:var(--pass);margin-top:10px;opacity:0;animation:fadeIn .5s forwards;font-size:12px;}
   @keyframes fadeIn{to{opacity:1;}}
-  @media(max-width:430px){
-    .terminal-body{font-size:11px;padding:16px 13px 18px;}
-    .test-item .score{font-size:10.5px;padding-left:10px;}
-    .terminal-sum{font-size:10.5px;}
+
+  /* products strip */
+  .products{margin-top:26px;}
+  .products-label{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:11px;}
+  .wordmarks{display:flex;flex-wrap:wrap;gap:8px;}
+  .wordmarks span{
+    font-family:var(--display);font-size:13px;font-weight:600;color:var(--text-dim);
+    border:1px solid var(--border-soft);border-radius:6px;padding:6px 12px;
   }
 
-  .kicker{font-family:var(--mono);font-size:13px;color:var(--pass);margin-bottom:14px;}
-  .kicker::before{content:"$ ";}
-  .hero-title{
-    font-family:var(--display);
-    font-size:clamp(30px,5.2vw,44px);
-    font-weight:700;line-height:1.14;
-    margin-bottom:16px;letter-spacing:-.022em;
-  }
-  .hero-title .accent{color:var(--pass);}
-  .hero-sub{font-size:15.5px;color:var(--text-dim);max-width:520px;margin-bottom:24px;}
-  .hero-sub strong{color:var(--text);font-weight:600;}
-  .hero-actions{display:flex;gap:11px;flex-wrap:wrap;}
-  .btn{
-    font-family:var(--mono);font-size:13px;
-    padding:11px 19px;border-radius:6px;
-    border:1px solid var(--border);
-    transition:background .15s ease,color .15s ease,border-color .15s ease;
-    display:inline-block;
-  }
-  .btn-primary{background:var(--pass);color:#08101A;font-weight:600;border-color:var(--pass);}
-  .btn-primary:hover{background:#4BE8AB;}
-  .btn-ghost{color:var(--text);}
-  .btn-ghost:hover{border-color:var(--pass);color:var(--pass);}
-
-  /* SECTIONS */
-  section{padding:56px 0;border-top:1px solid var(--border);}
-  .eyebrow{
-    font-family:var(--mono);font-size:12px;color:var(--pass);
-    display:flex;align-items:center;gap:8px;margin-bottom:10px;
-  }
-  .eyebrow::before{content:"\25B8";}
-  .eyebrow.ai{color:var(--ai);}
-  h2{
-    font-family:var(--display);font-size:clamp(21px,3vw,28px);
-    font-weight:600;margin-bottom:24px;letter-spacing:-.012em;line-height:1.25;
-  }
-
-  /* ABOUT */
-  .prose p{color:var(--text-dim);font-size:15.5px;margin-bottom:15px;}
+  /* prose */
+  .prose p{color:var(--text-dim);font-size:15px;margin-bottom:14px;}
   .prose p:last-of-type{margin-bottom:0;}
   .prose strong{color:var(--text);font-weight:600;}
-  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px;}
-  .chips span{
-    font-family:var(--mono);font-size:12px;color:var(--text);
-    background:var(--bg-raised);border:1px solid var(--border);
-    padding:5px 10px;border-radius:5px;
-  }
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+  .chips span{font-family:var(--mono);font-size:11.5px;color:var(--text);background:var(--bg-raised);border:1px solid var(--border);padding:5px 10px;border-radius:5px;}
   .chips span.hl{color:var(--ai);border-color:var(--ai-dim);background:rgba(167,139,250,.07);}
 
-  /* METRICS */
+  /* metrics */
   .metrics-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:1px;background:var(--border);border:1px solid var(--border);
-    border-radius:10px;overflow:hidden;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;
   }
-  .metric{background:var(--card);padding:20px 18px;}
-  .metric-label{font-family:var(--mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
-  .metric-value{font-family:var(--display);font-size:30px;font-weight:700;color:var(--pass);line-height:1.1;}
+  .metric{background:var(--card);padding:18px 17px;}
+  .metric-label{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;}
+  .metric-value{font-family:var(--display);font-size:27px;font-weight:700;color:var(--pass);line-height:1.12;}
   .metric-value.amber{color:var(--amber);}
   .metric-value.ai{color:var(--ai);}
-  .metric-bar{height:4px;background:#0F161F;border-radius:2px;margin-top:11px;overflow:hidden;}
+  .metric-value.scope{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--text);line-height:1.7;}
+  .metric-value .from{color:var(--text-dim);}
+  .metric-value .arrow{color:var(--text-dim);font-weight:500;}
+  .metric-bar{height:4px;background:#0F161F;border-radius:2px;margin-top:10px;overflow:hidden;}
   .metric-bar i{display:block;height:100%;background:var(--pass);border-radius:2px;}
   .metric-bar i.amber{background:var(--amber);}
   .metric-bar i.ai{background:var(--ai);}
   .metric-sub{font-size:11.5px;color:var(--text-dim);margin-top:9px;line-height:1.45;}
-  @media(max-width:700px){.metrics-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:470px){.metrics-grid{grid-template-columns:1fr;}}
 
-  /* AI CARDS */
-  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px;}
-  .ai-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:10px;padding:20px 19px;
-  }
-  .ai-card h3{
-    font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:9px;
-    display:flex;align-items:center;gap:9px;
-  }
-  .ai-card h3::before{
-    content:"";width:7px;height:7px;border-radius:2px;background:var(--ai);flex:none;
-  }
-  .ai-card p{color:var(--text-dim);font-size:14px;margin-bottom:13px;}
+  /* ai cards */
+  .ai-grid{display:grid;gap:13px;}
+  .ai-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:19px 18px;}
+  .ai-card h3{font-family:var(--display);font-size:15.5px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:9px;}
+  .ai-card h3::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--ai);flex:none;}
+  .ai-card p{color:var(--text-dim);font-size:14px;margin-bottom:12px;}
+  a.ai-card{display:block;transition:border-color .15s ease;}
+  a.ai-card:hover{border-color:var(--pass);}
+  a.ai-card p:last-child{margin-bottom:0;}
   .tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .tags span{
-    font-family:var(--mono);font-size:11px;color:var(--text-dim);
-    background:var(--bg-raised);padding:3px 9px;border-radius:4px;border:1px solid var(--border);
-  }
+  .tags span{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);background:var(--bg-raised);padding:3px 9px;border-radius:4px;border:1px solid var(--border);}
 
-  /* EXPERIENCE */
-  .exp-item{padding:22px 0;border-bottom:1px solid var(--border-soft);}
+  /* experience */
+  .exp-item{display:grid;grid-template-columns:104px 1fr;gap:18px;padding-block:20px;border-bottom:1px solid var(--border-soft);}
   .exp-item:first-of-type{padding-top:0;}
-  .exp-item:last-child{border-bottom:none;padding-bottom:0;}
-  .exp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
-  .exp-role{font-family:var(--display);font-size:17px;font-weight:600;}
-  .exp-time{font-family:var(--mono);font-size:12px;color:var(--text-dim);white-space:nowrap;}
-  .exp-org{font-size:13.5px;color:var(--pass);margin-bottom:9px;font-family:var(--mono);}
-  .exp-desc{color:var(--text-dim);font-size:14.5px;}
+  .exp-item:last-of-type{border-bottom:none;padding-bottom:0;}
+  .exp-time{font-family:var(--mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;line-height:1.65;padding-top:3px;}
+  .exp-role{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:3px;}
+  .exp-org{font-family:var(--mono);font-size:12.5px;color:var(--pass);margin-bottom:9px;}
+  .exp-desc{color:var(--text-dim);font-size:14px;margin-bottom:10px;}
+  .exp-desc:last-of-type{margin-bottom:12px;}
 
-  /* PROJECTS */
-  .project-card{
-    background:var(--card);border:1px solid var(--border);border-radius:10px;
-    padding:22px;margin-bottom:14px;
-  }
+  /* projects */
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:13px;}
   .project-card:last-of-type{margin-bottom:0;}
-  .project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:9px;flex-wrap:wrap;}
-  .project-title{font-family:var(--display);font-size:17.5px;font-weight:600;}
-  .project-badge{
-    font-family:var(--mono);font-size:11px;color:var(--pass);
-    background:rgba(53,211,153,.08);border:1px solid var(--pass-dim);
-    padding:3px 10px;border-radius:20px;white-space:nowrap;
-  }
+  .project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
+  .project-title{font-family:var(--display);font-size:16.5px;font-weight:600;}
+  .project-badge{font-family:var(--mono);font-size:10.5px;color:var(--pass);background:rgba(53,211,153,.08);border:1px solid var(--pass-dim);padding:3px 10px;border-radius:20px;white-space:nowrap;}
   .project-badge.ai{color:var(--ai);border-color:var(--ai-dim);background:rgba(167,139,250,.08);}
-  .project-desc{color:var(--text-dim);font-size:14.5px;margin-bottom:14px;}
-  .also{
-    margin-top:18px;font-size:13.5px;color:var(--text-dim);
-    border-left:2px solid var(--border);padding-left:14px;
-  }
+  .project-desc{color:var(--text-dim);font-size:14px;margin-bottom:13px;}
+  .also{margin-top:16px;font-size:13.5px;color:var(--text-dim);border-left:2px solid var(--border);padding-left:14px;}
   .also strong{color:var(--text);font-weight:600;}
 
-  /* RECOGNITION */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
-  @media(max-width:640px){.split{grid-template-columns:1fr;gap:24px;}}
-  .sub-h{font-family:var(--mono);font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:13px;}
-  .award{
-    display:flex;gap:10px;align-items:flex-start;
-    font-size:14px;color:var(--text-dim);margin-bottom:11px;
-  }
+  /* recognition */
+  .sub-h{font-family:var(--mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+  .award{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--text-dim);margin-bottom:10px;}
   .award::before{content:"\2713";color:var(--amber);font-family:var(--mono);flex:none;line-height:1.6;}
   .award strong{color:var(--text);font-weight:600;}
-  .edu-degree{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:5px;}
-  .edu-meta{font-size:14px;color:var(--text-dim);}
+  .edu{margin-top:26px;}
+  .edu-degree{font-family:var(--display);font-size:15.5px;font-weight:600;margin-bottom:4px;}
+  .edu-meta{font-size:13.5px;color:var(--text-dim);}
 
-  /* CONTACT */
-  .contact-terminal{
-    background:var(--bg-raised);border:1px solid var(--border);border-radius:10px;
-    padding:26px 24px;font-family:var(--mono);
-  }
+  /* contact */
+  .contact-terminal{background:var(--bg-raised);border:1px solid var(--border);border-radius:10px;padding:24px 22px;font-family:var(--mono);}
   .contact-terminal .prompt{color:var(--pass);}
-  .contact-terminal .line{color:var(--text-dim);margin-bottom:8px;font-size:13.5px;word-break:break-word;}
+  .contact-terminal .line{color:var(--text-dim);margin-bottom:8px;font-size:13px;word-break:break-word;}
   .contact-terminal .line.out{color:var(--text);}
-  .contact-links{display:flex;gap:11px;flex-wrap:wrap;margin-top:20px;}
+  .contact-links{margin-top:18px;}
 
   footer{
-    padding:26px 0 34px;text-align:center;
-    font-family:var(--mono);font-size:12px;color:var(--text-dim);
-    border-top:1px solid var(--border);
+    margin-top:44px;padding-top:22px;padding-bottom:8px;border-top:1px solid var(--border);
+    font-family:var(--mono);font-size:11.5px;color:var(--text-dim);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1023px){
+    .shell{grid-template-columns:1fr;gap:0;padding:0 24px;}
+    .side{position:static;min-height:0;padding-block:52px 8px;justify-content:flex-start;}
+    .side h1{font-size:clamp(29px,7vw,38px);}
+    .pitch{max-width:560px;}
+    .avail{margin-bottom:26px;}
+    .content{padding-block:36px 0;max-width:640px;}
+    section:first-of-type{padding-top:0;}
+    /* nav detaches to a fixed bottom bar so it stays reachable on a long page */
+    .nav-links{
+      position:fixed;left:0;right:0;bottom:0;z-index:60;
+      flex-direction:row;justify-content:center;gap:16px;margin:0;
+      background:rgba(13,19,27,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-top:1px solid var(--border);padding:11px 14px;font-size:11.5px;
+      overflow-x:auto;
+    }
+    .nav-links a{gap:0;}
+    .nav-links a::before{display:none;}
+    body{padding-bottom:52px;}
+    footer{margin-bottom:8px;}
+  }
+  @media(max-width:560px){
+    .metrics-grid{grid-template-columns:1fr;}
+    .exp-item{grid-template-columns:1fr;gap:6px;}
+    .exp-time{padding-top:0;}
+    .nav-links{gap:13px;font-size:11px;justify-content:flex-start;}
+  }
+  @media(max-width:430px){
+    .terminal-body{font-size:11px;padding:16px 13px 18px;}
+    .test-item .score{font-size:10.5px;padding-left:10px;}
+    .terminal-sum,.terminal-note{font-size:10.5px;}
   }
 
   @media(prefers-reduced-motion:reduce){
-    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;}
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition:none !important;}
     html{scroll-behavior:auto;}
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <a class="skip" href="#main">Skip to content</a>
 
-<nav aria-label="Primary">
-  <div class="wrap">
-    <a class="nav-logo" href="#top"><span class="dot" aria-hidden="true"></span>zakir.qa</a>
-    <div class="nav-links">
+<div class="shell">
+
+  <aside class="side">
+    <!-- PHOTO: drop a headshot at assets/photo.jpg and uncomment. Square crop, >=176px, plain background.
+    <img class="photo" src="assets/photo.jpg" width="88" height="88" alt="Mohamed Zakir Hussain">
+    -->
+    <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>zakir.qa</a>
+    <h1>Mohamed Zakir Hussain</h1>
+    <p class="role">AI Quality Engineering &amp;<br>Test Automation Lead</p>
+    <p class="pitch">I make AI systems prove they work. 8.5 years of test automation across healthcare and life sciences, now building the evaluation harnesses that decide whether an LLM feature is fit to ship.</p>
+    <span class="avail"><i aria-hidden="true"></i>Open to opportunities</span>
+
+    <nav class="nav-links" aria-label="Sections">
       <a href="#about">about</a>
       <a href="#impact">impact</a>
       <a href="#ai">ai quality</a>
+      <a href="#experience">experience</a>
       <a href="#work">work</a>
       <a href="#contact">contact</a>
+    </nav>
+
+    <div class="socials">
+      <a href="mailto:zakir9622@gmail.com" class="primary">Email me &rarr;</a>
+      <a href="https://linkedin.com/in/zakirz" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/iamzakirzr" target="_blank" rel="noopener">GitHub</a>
     </div>
-  </div>
-</nav>
+  </aside>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="terminal">
-          <div class="terminal-bar">
-            <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-            <div class="label">zakir_profile.eval.py &mdash; run</div>
-          </div>
-          <div class="terminal-body">
-            <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">pytest evals/ --metrics=ragas,deepeval</span></div>
-            <div class="test-item" style="animation-delay:.3s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">faithfulness</span><span class="score">0.94</span></div>
-            <div class="test-item" style="animation-delay:.45s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">context precision</span><span class="score">0.91</span></div>
-            <div class="test-item" style="animation-delay:.6s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">answer relevance</span><span class="score">0.93</span></div>
-            <div class="test-item" style="animation-delay:.75s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">tool&#8209;calling accuracy</span><span class="score">0.97</span></div>
-            <div class="test-item" style="animation-delay:.9s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">hallucination rate</span><span class="score dim">under threshold</span></div>
-            <div class="terminal-sum" style="animation-delay:1.1s">5 passed &middot; 0 regressions &middot; 8.5 yrs runtime</div>
-          </div>
+  <main class="content" id="main">
+
+    <section id="intro" aria-label="Evaluation sample">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+          <div class="label">sample_eval_run.py</div>
+          <div class="tag">illustrative</div>
         </div>
-
-        <div class="kicker">whoami</div>
-        <h1 class="hero-title">Mohamed Zakir Hussain.<br><span class="accent">I make AI systems prove they work.</span></h1>
-        <p class="hero-sub">Senior QA Engineer at <strong>IQVIA</strong>, 8.5 years of test automation across healthcare and life sciences. These days most of my work is quality engineering for <strong>LLM, RAG and agentic AI</strong> systems &mdash; the part where a confident-sounding answer still has to be measured before anyone ships it.</p>
-        <div class="hero-actions">
-          <a href="mailto:zakir9622@gmail.com" class="btn btn-primary">Email me &rarr;</a>
-          <a href="https://linkedin.com/in/zakirz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-          <a href="https://github.com/iamzakirzr" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <div class="terminal-body">
+          <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">pytest evals/ --metrics=ragas,deepeval</span></div>
+          <div class="terminal-note" style="animation-delay:.2s"># sample output &mdash; the metric set I work with, not client data</div>
+          <div class="test-item" style="animation-delay:.35s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">faithfulness</span><span class="score">0.94</span></div>
+          <div class="test-item" style="animation-delay:.5s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">context precision</span><span class="score">0.91</span></div>
+          <div class="test-item" style="animation-delay:.65s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">answer relevance</span><span class="score">0.93</span></div>
+          <div class="test-item" style="animation-delay:.8s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">tool&#8209;calling accuracy</span><span class="score">0.97</span></div>
+          <div class="test-item" style="animation-delay:.95s"><span class="check" aria-hidden="true">&#10003;</span><span class="name">hallucination rate</span><span class="score dim">under threshold</span></div>
+          <div class="terminal-sum" style="animation-delay:1.15s">5 passed &middot; sample run</div>
         </div>
       </div>
 
-      <div class="scorecard-wrap">
-        <div class="scorecard-badge">eval passed</div>
-        <div class="float">
-          <svg viewBox="0 0 240 320" width="100%" role="img" aria-label="Illustration of an evaluation scorecard showing four passing metrics">
-            <rect x="14" y="18" width="212" height="284" rx="14" fill="#18222F" stroke="#27313F" stroke-width="2"/>
-            <path d="M14 32a14 14 0 0 1 14-14h184a14 14 0 0 1 14 14v28H14z" fill="#0F161F"/>
-            <circle cx="34" cy="39" r="4" fill="#37424F"/><circle cx="48" cy="39" r="4" fill="#37424F"/><circle cx="62" cy="39" r="4" fill="#37424F"/>
-            <rect x="80" y="35" width="64" height="7" rx="3.5" fill="#37424F"/>
-            <g font-family="monospace" font-size="10" fill="#94A2B4">
-              <text x="32" y="88">faithfulness</text>
-              <text x="32" y="130">precision</text>
-              <text x="32" y="172">relevance</text>
-              <text x="32" y="214">tool calls</text>
-            </g>
-            <g>
-              <rect x="32" y="96" width="142" height="7" rx="3.5" fill="#0F161F"/>
-              <rect x="32" y="96" width="133" height="7" rx="3.5" fill="#35D399"/>
-              <rect x="32" y="138" width="142" height="7" rx="3.5" fill="#0F161F"/>
-              <rect x="32" y="138" width="129" height="7" rx="3.5" fill="#35D399"/>
-              <rect x="32" y="180" width="142" height="7" rx="3.5" fill="#0F161F"/>
-              <rect x="32" y="180" width="132" height="7" rx="3.5" fill="#A78BFA"/>
-              <rect x="32" y="222" width="142" height="7" rx="3.5" fill="#0F161F"/>
-              <rect x="32" y="222" width="138" height="7" rx="3.5" fill="#35D399"/>
-            </g>
-            <g font-family="monospace" font-size="9" fill="#35D399">
-              <text x="182" y="104">.94</text><text x="182" y="146">.91</text><text x="182" y="230">.97</text>
-            </g>
-            <text x="182" y="188" font-family="monospace" font-size="9" fill="#A78BFA">.93</text>
-            <line x1="32" y1="250" x2="208" y2="250" stroke="#27313F" stroke-width="1.5"/>
-            <text x="32" y="282" font-family="monospace" font-size="11" fill="#35D399">4/4 passed</text>
-            <rect x="14" y="18" width="212" height="284" rx="14" fill="none" stroke="#27313F" stroke-width="2"/>
-            <g transform="translate(166,252)">
-              <circle cx="22" cy="22" r="21" fill="#141D28" stroke="#35D399" stroke-width="2"/>
-              <path d="M13 22 L19 29 L32 14" fill="none" stroke="#35D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-          </svg>
+      <div class="products">
+        <div class="products-label">Products I've put under test</div>
+        <div class="wordmarks">
+          <span>IQVIA</span><span>Microsoft Power Apps</span><span>Surgimap &mdash; Globus</span><span>Secret Server &mdash; Thycotic/Delinea</span><span>Icomm Connect</span>
         </div>
       </div>
-    </div>
-  </div>
-</header>
+    </section>
 
-<main id="main">
+    <section id="about">
+      <div class="eyebrow">about</div>
+      <h2>What I actually do</h2>
+      <div class="prose">
+        <p>I'm a Senior QA Engineer at <strong>IQVIA</strong>, working on healthcare and life sciences platforms where "it looked fine when I clicked it" is not an acceptable standard of evidence. Most of my career has gone into building test automation frameworks that other engineers can actually live in &mdash; <strong>Playwright, Selenium, AccelQ, Python and C#</strong>, wired into Azure DevOps so the regression suite runs itself every day instead of the night before a release.</p>
+        <p>The newer half of the job is the interesting one. Enterprise chatbots, RAG pipelines and agentic workflows don't fail like deterministic software does: they fail quietly, fluently, and only sometimes. So I build <strong>evaluation frameworks</strong> instead of assertions &mdash; golden datasets, scored metrics, thresholds that a pipeline can fail on &mdash; and treat a drop in faithfulness the same way I'd treat a red test.</p>
+        <p>I also lead a team of five QA engineers and own the STLC across Scrum, Kanban and Waterfall delivery models, which mostly means translating between what a test report says and what a release manager needs to hear.</p>
+        <div class="chips">
+          <span class="hl">DeepEval</span><span class="hl">RAGAS</span><span class="hl">LangSmith</span><span class="hl">Agentic AI</span>
+          <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Azure DevOps</span><span>Jenkins</span><span>Docker</span><span>JMeter</span><span>k6</span><span>SQL</span>
+        </div>
+      </div>
+    </section>
 
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow">about</div>
-    <h2>What I actually do</h2>
-    <div class="prose">
-      <p>I'm a Senior QA Engineer at <strong>IQVIA</strong>, working on healthcare and life sciences platforms where "it looked fine when I clicked it" is not an acceptable standard of evidence. Most of my career has gone into building test automation frameworks that other engineers can actually live in &mdash; <strong>Playwright, Selenium, AccelQ, Python and C#</strong>, wired into Azure DevOps so the regression suite runs itself every day instead of the night before a release.</p>
-      <p>The newer half of the job is the interesting one. Enterprise chatbots, RAG pipelines and agentic workflows don't fail like deterministic software does: they fail quietly, fluently, and only sometimes. So I build <strong>evaluation frameworks</strong> instead of assertions &mdash; golden datasets, scored metrics, thresholds that a pipeline can fail on &mdash; and treat a drop in faithfulness the same way I'd treat a red test.</p>
-      <p>I also lead a team of five QA engineers and own the STLC across Scrum, Kanban and Waterfall delivery models, which mostly means translating between what a test report says and what a release manager needs to hear.</p>
-      <div class="chips">
-        <span class="hl">DeepEval</span><span class="hl">RAGAS</span><span class="hl">LangSmith</span><span class="hl">Agentic AI</span>
-        <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Azure DevOps</span><span>Jenkins</span><span>Docker</span><span>JMeter</span><span>k6</span><span>SQL</span>
+    <section id="impact">
+      <div class="eyebrow">eval report</div>
+      <h2>Where the needle moved</h2>
+      <div class="metrics-grid">
+        <!-- TODO(zakir): baseline pairs. Replace a single value with:
+             <div class="metric-value"><span class="from">4h</span> <span class="arrow">&rarr;</span> 1h</div>
+             A before&rarr;after pair is far stronger than a bare percentage. -->
+        <div class="metric">
+          <div class="metric-label">Regression execution time</div>
+          <div class="metric-value">&minus;75%</div>
+          <div class="metric-bar"><i style="width:75%"></i></div>
+          <div class="metric-sub">by scaling Playwright and Selenium suites and killing serial execution</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Release feedback loop</div>
+          <div class="metric-value">40% faster</div>
+          <div class="metric-bar"><i style="width:40%"></i></div>
+          <div class="metric-sub">daily regression through Azure DevOps CI/CD, not pre-release crunch</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Automation coverage</div>
+          <div class="metric-value">+25%</div>
+          <div class="metric-bar"><i style="width:25%"></i></div>
+          <div class="metric-sub">regression suite scope across UI, API and database layers</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Engineers led</div>
+          <div class="metric-value ai">5</div>
+          <div class="metric-bar"><i class="ai" style="width:60%"></i></div>
+          <div class="metric-sub">QA team, full STLC across Scrum, Kanban and Waterfall</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Experience</div>
+          <div class="metric-value amber">8.5 yrs</div>
+          <div class="metric-bar"><i class="amber" style="width:85%"></i></div>
+          <div class="metric-sub">healthcare, life sciences and enterprise platforms</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Scope under test</div>
+          <div class="metric-value scope">web &middot; API &middot; database<br>desktop &middot; mobile</div>
+          <div class="metric-sub">one framework estate spanning all five, Windows and macOS included</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="impact">
-  <div class="wrap">
-    <div class="eyebrow">eval report</div>
-    <h2>Where the needle moved</h2>
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="metric-label">Regression execution time</div>
-        <div class="metric-value">&minus;75%</div>
-        <div class="metric-bar"><i style="width:75%"></i></div>
-        <div class="metric-sub">by scaling Playwright and Selenium suites and killing serial execution</div>
+    <section id="ai">
+      <div class="eyebrow ai">ai quality engineering</div>
+      <h2>Testing systems that don't behave the same way twice</h2>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <h3>LLM &amp; RAG evaluation</h3>
+          <p>Golden datasets first, then scored runs &mdash; faithfulness, context precision, answer relevance, hallucination rate. DeepEval and RAGAS sit in the loop so a drop in response quality surfaces as a failing check, not as a support ticket three weeks later.</p>
+          <div class="tags"><span>RAGAS</span><span>DeepEval</span><span>Golden datasets</span><span>Context precision</span></div>
+        </div>
+        <div class="ai-card">
+          <h3>Agentic workflow validation</h3>
+          <p>Multi-step agents get judged on what they <em>did</em>, not just what they said: tool-calling accuracy, reasoning traces, autonomous task execution, and whether context is still intact by step six.</p>
+          <div class="tags"><span>Tool-calling</span><span>Reasoning traces</span><span>Context retention</span><span>LangSmith</span></div>
+        </div>
+        <div class="ai-card">
+          <h3>Conversational AI quality</h3>
+          <p>End-to-end quality engineering for enterprise chatbots &mdash; conversational flows, intent recognition, and fallback behaviour when the model has nothing useful. Deterministic guardrails catch the contract violations a pattern can express; semantic scoring covers the far larger set it can't.</p>
+          <div class="tags"><span>Intent recognition</span><span>Fallback paths</span><span>Regex guardrails</span><span>Flow coverage</span></div>
+        </div>
+        <div class="ai-card">
+          <h3>Robustness &amp; safety</h3>
+          <p>Prompt-injection probing and bias testing, sweeping temperature, confidence thresholds and context memory to find the point where a model stops being trustworthy &mdash; before a user finds it instead.</p>
+          <div class="tags"><span>Prompt injection</span><span>Bias testing</span><span>Parameter sweeps</span><span>Model robustness</span></div>
+        </div>
       </div>
-      <div class="metric">
-        <div class="metric-label">Release feedback loop</div>
-        <div class="metric-value">40% faster</div>
-        <div class="metric-bar"><i style="width:40%"></i></div>
-        <div class="metric-sub">daily regression through Azure DevOps CI/CD, not pre-release crunch</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Automation coverage</div>
-        <div class="metric-value">+25%</div>
-        <div class="metric-bar"><i style="width:25%"></i></div>
-        <div class="metric-sub">reusable framework libraries across UI, API and database layers</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Engineers led</div>
-        <div class="metric-value ai">5</div>
-        <div class="metric-bar"><i class="ai" style="width:60%"></i></div>
-        <div class="metric-sub">QA team, full STLC across Scrum, Kanban and Waterfall</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Experience</div>
-        <div class="metric-value amber">8.5 yrs</div>
-        <div class="metric-bar"><i class="amber" style="width:85%"></i></div>
-        <div class="metric-sub">healthcare, life sciences and enterprise platforms</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">CI regression grid</div>
-        <div class="metric-value amber">20 VMs</div>
-        <div class="metric-bar"><i class="amber" style="width:70%"></i></div>
-        <div class="metric-sub">scheduled cross-platform runs on Jenkins for Surgimap</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="ai">
-  <div class="wrap">
-    <div class="eyebrow ai">ai quality engineering</div>
-    <h2>Testing systems that don't behave the same way twice</h2>
-    <div class="ai-grid">
-      <div class="ai-card">
-        <h3>LLM &amp; RAG evaluation</h3>
-        <p>Golden datasets first, then scored runs &mdash; faithfulness, context precision, answer relevance, hallucination rate. DeepEval and RAGAS sit in the loop so a drop in response quality surfaces as a failing check, not as a support ticket three weeks later.</p>
-        <div class="tags"><span>RAGAS</span><span>DeepEval</span><span>Golden datasets</span><span>Context precision</span></div>
-      </div>
-      <div class="ai-card">
-        <h3>Agentic workflow validation</h3>
-        <p>Multi-step agents get judged on what they <em>did</em>, not just what they said: tool-calling accuracy, reasoning traces, autonomous task execution, and whether context is still intact by step six.</p>
-        <div class="tags"><span>Tool-calling</span><span>Reasoning traces</span><span>Context retention</span><span>LangSmith</span></div>
-      </div>
-      <div class="ai-card">
-        <h3>Conversational AI quality</h3>
-        <p>End-to-end quality engineering for enterprise chatbots &mdash; conversational flows, intent recognition, fallback behaviour when the model has nothing useful, and the reliability of what actually comes back to the user.</p>
-        <div class="tags"><span>Intent recognition</span><span>Fallback paths</span><span>Regex validation</span><span>Flow coverage</span></div>
-      </div>
-      <div class="ai-card">
-        <h3>Robustness &amp; safety</h3>
-        <p>Prompt-injection probing and bias testing, sweeping temperature, confidence thresholds and context memory to find the point where a model stops being trustworthy &mdash; before a user finds it instead.</p>
-        <div class="tags"><span>Prompt injection</span><span>Bias testing</span><span>Parameter sweeps</span><span>Model robustness</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <section id="experience">
+      <div class="eyebrow">experience</div>
+      <h2>Eight and a half years of it</h2>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="eyebrow">experience</div>
-    <h2>Eight and a half years of it</h2>
-
-    <div class="exp-item">
-      <div class="exp-head">
-        <div class="exp-role">Senior QA Engineer &middot; Software Engineer 2</div>
+      <div class="exp-item">
         <div class="exp-time">Sep 2022 &mdash; Present</div>
+        <div>
+          <div class="exp-role">Senior QA Engineer &middot; Software Engineer 2</div>
+          <div class="exp-org">IQVIA &middot; Healthcare &amp; Life Sciences</div>
+          <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python &mdash; reusable libraries that pushed coverage up 25% and cut regression execution time by 75%. The Azure DevOps pipelines behind them run full regression daily, which took roughly 40% off the release feedback loop.</p>
+          <p class="exp-desc">The other half of my work is AI quality: I own end-to-end QE for enterprise chatbot and RAG systems, build LLM evaluation suites in DeepEval and RAGAS around faithfulness, context precision and relevance, and validate multi-step agentic workflows for tool-calling accuracy, reasoning traces and context retention. Performance and scale testing runs through JMeter, Artillery and k6. Alongside that I mentor five QA engineers and manage the full STLC.</p>
+          <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>DeepEval</span><span>RAGAS</span><span>Azure DevOps</span><span>k6</span></div>
+        </div>
       </div>
-      <div class="exp-org">IQVIA &middot; Healthcare &amp; Life Sciences</div>
-      <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python &mdash; reusable libraries that pushed coverage up 25% and cut regression execution time by 75%. The Azure DevOps pipelines behind them run full regression daily, which took roughly 40% off the release feedback loop.</p>
-      <p class="exp-desc" style="margin-top:12px">The other half of my work is AI quality: I own end-to-end QE for enterprise chatbot and RAG systems, build LLM evaluation suites in DeepEval and RAGAS around faithfulness, context precision and relevance, and validate multi-step agentic workflows for tool-calling accuracy, reasoning traces and context retention. Performance and scale testing runs through JMeter, Artillery and k6.</p>
-      <p class="exp-desc" style="margin-top:12px">Alongside the engineering work I mentor five QA engineers and manage the full STLC across Scrum, Kanban and Waterfall teams.</p>
-    </div>
 
-    <div class="exp-item">
-      <div class="exp-head">
-        <div class="exp-role">Senior Test Engineer</div>
+      <div class="exp-item">
         <div class="exp-time">Mar 2021 &mdash; Sep 2022</div>
+        <div>
+          <div class="exp-role">Senior Test Engineer</div>
+          <div class="exp-org">Mindtree (now LTIMindtree)</div>
+          <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. I also owned test strategy and quality governance &mdash; standardising how the team handled QA process, defect management and quality reporting so release readiness stopped being a matter of opinion.</p>
+          <div class="tags"><span>Playwright</span><span>Cypress</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
+        </div>
       </div>
-      <div class="exp-org">Mindtree</div>
-      <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. I also owned test strategy and quality governance &mdash; standardising how the team handled QA process, defect management and quality reporting so release readiness stopped being a matter of opinion.</p>
-    </div>
 
-    <div class="exp-item">
-      <div class="exp-head">
-        <div class="exp-role">Senior Test Engineer</div>
+      <div class="exp-item">
         <div class="exp-time">Mar 2018 &mdash; Mar 2021</div>
+        <div>
+          <div class="exp-role">Senior Test Engineer</div>
+          <div class="exp-org">Indium Software</div>
+          <p class="exp-desc">Built and maintained core test automation frameworks across several languages and client platforms, strengthening coverage and overall application quality. Much of the job was turning vague functional and technical requirements into test plans that held up under scrutiny, then validating functionality and performance directly with clients and cross-functional teams.</p>
+          <div class="tags"><span>Java</span><span>Selenium</span><span>Squish</span><span>Jenkins</span><span>JIRA</span></div>
+        </div>
       </div>
-      <div class="exp-org">Indium Software</div>
-      <p class="exp-desc">Built and maintained core test automation frameworks across several languages and client platforms, strengthening coverage and overall application quality. Much of the job was turning vague functional and technical requirements into test plans that held up under scrutiny, then validating functionality and performance directly with clients and cross-functional teams.</p>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="work">
-  <div class="wrap">
-    <div class="eyebrow">selected work</div>
-    <h2>Platforms I've put under test</h2>
-
-    <div class="project-card">
-      <div class="project-head">
-        <div class="project-title">AI Chatbot Evaluation Framework</div>
-        <div class="project-badge ai">&#10003; IQVIA</div>
+    <!-- ==========================================================================
+         PUBLISH STEP: case studies.
+         Three drafts exist at case-studies/*.html. Each carries <meta name="robots"
+         content="noindex"> and visible [Needs Zakir: ...] blocks.
+         To publish: fill every TODO in those files, remove their noindex tag, then
+         uncomment this section and add a "case studies" link to the nav above.
+    <section id="case-studies">
+      <div class="eyebrow">case studies</div>
+      <h2>Three problems, in detail</h2>
+      <div class="ai-grid">
+        <a class="ai-card" href="case-studies/llm-eval.html"><h3>Evaluating a production RAG assistant</h3><p>Golden datasets, scored thresholds, and what it takes to fail a build on a quality regression.</p></a>
+        <a class="ai-card" href="case-studies/surgimap.html"><h3>One suite, three operating systems</h3><p>A POM framework over Squish and BDD covering Windows, macOS and iOS from a single codebase.</p></a>
+        <a class="ai-card" href="case-studies/ci-regression.html"><h3>Moving regression off the critical path</h3><p>From pre-release crunch to a daily Azure DevOps run the team actually trusts.</p></a>
       </div>
-      <p class="project-desc">An LLM evaluation framework for a production conversational assistant: golden datasets, RAGAS scoring for faithfulness and context relevance, and tracked hallucination rates that a pipeline can fail on. UI automation validates the conversational surface with regex-based response verification, and a separate track probes prompt-injection and bias by sweeping temperature, confidence thresholds and context memory.</p>
-      <div class="tags"><span>Python</span><span>RAGAS</span><span>DeepEval</span><span>LangSmith</span><span>Prompt engineering</span><span>Regex validation</span></div>
-    </div>
+    </section>
+         ========================================================================== -->
 
-    <div class="project-card">
-      <div class="project-head">
-        <div class="project-title">Surgimap &mdash; Globus</div>
-        <div class="project-badge">&#10003; Imaging &amp; simulation</div>
+    <section id="work">
+      <div class="eyebrow">selected work</div>
+      <h2>Platforms I've shipped quality on</h2>
+
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">AI Chatbot Evaluation Framework</div>
+          <div class="project-badge ai">&#10003; IQVIA</div>
+        </div>
+        <p class="project-desc">An LLM evaluation framework for a production conversational assistant: golden datasets, RAGAS scoring for faithfulness and context relevance, and tracked hallucination rates that a pipeline can fail on. UI automation validates the conversational surface, and a separate track probes prompt-injection and bias by sweeping temperature, confidence thresholds and context memory.</p>
+        <div class="tags"><span>Python</span><span>RAGAS</span><span>DeepEval</span><span>LangSmith</span><span>Prompt engineering</span></div>
       </div>
-      <p class="project-desc">Architected a Python, POM-driven automation framework integrated with Squish and BDD, giving acceptance coverage across Windows, macOS and iOS from one suite. Backed it with Jenkins CI across 20 virtual machines for scheduled regression, so cross-platform feedback arrived every morning instead of every release.</p>
-      <div class="tags"><span>Python</span><span>Squish</span><span>BDD</span><span>Page Object Model</span><span>Jenkins</span></div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-head">
-        <div class="project-title">Power Apps &mdash; Microsoft</div>
-        <div class="project-badge">&#10003; Low-code platform</div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Surgimap &mdash; Globus</div>
+          <div class="project-badge">&#10003; Imaging &amp; simulation</div>
+        </div>
+        <p class="project-desc">Architected a Python, POM-driven automation framework integrated with Squish and BDD, giving acceptance coverage across Windows, macOS and iOS from one suite. Backed it with Jenkins CI across <strong>20 virtual machines</strong> for scheduled regression, so cross-platform feedback arrived every morning instead of every release.</p>
+        <div class="tags"><span>Python</span><span>Squish</span><span>BDD</span><span>Page Object Model</span><span>Jenkins</span><span>20-VM grid</span></div>
       </div>
-      <p class="project-desc">Cypress and Playwright automation spanning web, mobile, Windows and macOS for a low-code application platform. Beyond the suites themselves I governed daily execution, pull-request validation, code reviews and release-readiness calls &mdash; the unglamorous part that decides whether automation is trusted or ignored.</p>
-      <div class="tags"><span>Cypress</span><span>Playwright</span><span>TypeScript</span><span>PR validation</span><span>Code review</span></div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-head">
-        <div class="project-title">Secret Server &mdash; Thycotic</div>
-        <div class="project-badge">&#10003; Privileged access security</div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Power Apps &mdash; Microsoft</div>
+          <div class="project-badge">&#10003; Low-code platform</div>
+        </div>
+        <p class="project-desc">Cypress and Playwright automation spanning web, mobile, Windows and macOS for a low-code application platform. Beyond the suites themselves I governed daily execution, pull-request validation, code reviews and release-readiness calls &mdash; the unglamorous part that decides whether automation is trusted or ignored.</p>
+        <div class="tags"><span>Cypress</span><span>Playwright</span><span>TypeScript</span><span>PR validation</span><span>Code review</span></div>
       </div>
-      <p class="project-desc">Led end-to-end QA automation for web, server and Windows applications on a privileged-account protection product, using POM with C#/.NET, Java and NUnit. Embedded Azure Pipelines into the testing lifecycle so defect detection and quality visibility moved to every commit rather than every milestone.</p>
-      <div class="tags"><span>C#/.NET</span><span>NUnit</span><span>Java</span><span>Page Object Model</span><span>Azure Pipelines</span></div>
-    </div>
 
-    <p class="also"><strong>Also:</strong> <strong>Tactal</strong> (Icomm Connect) &mdash; Java and Selenium click-to-call automation on an iSAFE data-driven framework, with Jenkins and JIRA wired into the Agile STLC. <strong>TeamworkIQ</strong> &mdash; hybrid PyTest and Selenium suites for employee management software, executed through Azure Pipelines.</p>
-  </div>
-</section>
-
-<section id="recognition">
-  <div class="wrap">
-    <div class="eyebrow">on the record</div>
-    <h2>Recognition &amp; education</h2>
-    <div class="split">
-      <div>
-        <div class="sub-h">Awards</div>
-        <div class="award"><div><strong>Client Appreciation</strong> &mdash; delivery of the first Microsoft project, Aug 2021</div></div>
-        <div class="award"><div><strong>Automation Accessibility Project Award</strong> &mdash; on-time delivery for Microsoft, Jan 2021</div></div>
-        <div class="award"><div><strong>Rising Star Award</strong> &mdash; Indium Software, 2019</div></div>
-        <div class="award"><div><strong>Spot Awards</strong> &mdash; API test script optimisation, and a POC for automated call testing</div></div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Secret Server &mdash; Thycotic (now Delinea)</div>
+          <div class="project-badge">&#10003; Privileged access security</div>
+        </div>
+        <p class="project-desc">Led end-to-end QA automation for web, server and Windows applications on a privileged-account protection product, using POM with C#/.NET, Java and NUnit. Embedded Azure Pipelines into the testing lifecycle so defect detection and quality visibility moved to every commit rather than every milestone.</p>
+        <div class="tags"><span>C#/.NET</span><span>NUnit</span><span>Java</span><span>Page Object Model</span><span>Azure Pipelines</span></div>
       </div>
-      <div>
+
+      <p class="also"><strong>Also:</strong> <strong>Tactal</strong> (Icomm Connect) &mdash; Java and Selenium click-to-call automation on an iSAFE data-driven framework, with Jenkins and JIRA wired into the Agile STLC. <strong>TeamworkIQ</strong> &mdash; hybrid PyTest and Selenium suites for employee management software, executed through Azure Pipelines.</p>
+    </section>
+
+    <section id="recognition">
+      <div class="eyebrow">on the record</div>
+      <h2>Recognition &amp; education</h2>
+      <div class="sub-h">Awards</div>
+      <div class="award"><div><strong>Client Appreciation</strong> &mdash; delivery of the first Microsoft project, Aug 2021</div></div>
+      <div class="award"><div><strong>Automation Accessibility Project Award</strong> &mdash; on-time delivery for Microsoft, Jan 2021</div></div>
+      <div class="award"><div><strong>Rising Star Award</strong> &mdash; Indium Software, 2019</div></div>
+      <div class="award"><div><strong>Spot Awards</strong> &mdash; API test script optimisation, and a POC for automated call testing</div></div>
+      <div class="edu">
         <div class="sub-h">Education</div>
         <div class="edu-degree">B.E. Electronics &amp; Communication Engineering</div>
         <div class="edu-meta">Bharathidasan Engineering College, Tamil Nadu &mdash; 2017</div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="eyebrow">contact</div>
-    <h2>Get in touch</h2>
-    <div class="contact-terminal">
-      <div class="line"><span class="prompt">$</span> whoami</div>
-      <div class="line out">Mohamed Zakir Hussain &mdash; AI Quality Engineering &amp; Test Automation Lead</div>
-      <div class="line"><span class="prompt">$</span> contact --email</div>
-      <div class="line out">zakir9622@gmail.com</div>
-      <div class="line"><span class="prompt">$</span> status</div>
-      <div class="line out">open to conversations about AI quality engineering and SDET leadership</div>
-      <div class="contact-links">
-        <a href="mailto:zakir9622@gmail.com" class="btn btn-primary">Email me &rarr;</a>
-        <a href="https://linkedin.com/in/zakirz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-        <a href="https://github.com/iamzakirzr" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
-        <a href="mailto:zakir9622@gmail.com?subject=R%C3%A9sum%C3%A9%20request" class="btn btn-ghost">Request r&eacute;sum&eacute;</a>
+    <section id="contact">
+      <div class="eyebrow">contact</div>
+      <h2>Get in touch</h2>
+      <div class="contact-terminal">
+        <div class="line"><span class="prompt">$</span> whoami</div>
+        <div class="line out">Mohamed Zakir Hussain &mdash; AI Quality Engineering &amp; Test Automation Lead</div>
+        <div class="line"><span class="prompt">$</span> contact --email</div>
+        <div class="line out">zakir9622@gmail.com</div>
+        <div class="line"><span class="prompt">$</span> status</div>
+        <div class="line out">open to conversations about AI quality engineering and SDET leadership</div>
+        <div class="socials contact-links">
+          <a href="mailto:zakir9622@gmail.com" class="primary">Email me &rarr;</a>
+          <a href="https://linkedin.com/in/zakirz" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/iamzakirzr" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:zakir9622@gmail.com?subject=R%C3%A9sum%C3%A9%20request">Request r&eacute;sum&eacute;</a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+      <footer>built by Zakir &middot; hand-written HTML, no framework, no build step</footer>
+    </section>
 
-</main>
+  </main>
+</div>
 
-<footer>built by Zakir &middot; hand-written HTML, no framework, no build step</footer>
+<script>
+// Scroll-spy: marks the nav link for whichever section owns the middle of the viewport.
+// Progressive enhancement only — without JS the links are still plain anchors.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var byId = {};
+  links.forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) { byId[el.id] = a; }
+  });
+  var ids = Object.keys(byId);
+  if (!ids.length || !('IntersectionObserver' in window)) { return; }
+
+  var active = null;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) { return; }
+      var link = byId[entry.target.id];
+      if (link === active) { return; }
+      if (active) { active.removeAttribute('aria-current'); }
+      active = link;
+      active.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 });
+
+  ids.forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+</script>
 
 <script type="application/ld+json">
 {

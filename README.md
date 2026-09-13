@@ -46,37 +46,65 @@ LLM-driven feature is fit to ship.
 
 ## About this repository
 
-This is the source of **[iamzakirzr.github.io](https://iamzakirzr.github.io/)** — a
-single page of hand-written HTML with an inline stylesheet. No framework, no npm, no
-build step, no Jekyll. Open `index.html` in a browser and that is the whole thing.
+This is the source of **[iamzakirzr.github.io](https://iamzakirzr.github.io/)** — hand-written
+HTML with an inline stylesheet. No framework, no npm, no build step, no Jekyll. Open
+`index.html` in a browser and that is the whole thing.
 
 ```
-index.html            the page (content + styles + JSON-LD)
-assets/og-image.png   1200x630 link preview card for LinkedIn / X / Slack
+index.html                       the page (content + styles + ~25 lines of scroll-spy JS)
+case-studies/llm-eval.html       draft — noindex, not linked from the portfolio
+case-studies/surgimap.html       draft — noindex, not linked
+case-studies/ci-regression.html  draft — noindex, not linked
+assets/og-image.png              1200x630 link preview card for LinkedIn / X / Slack
 assets/favicon.svg
-robots.txt            allows everything, points at the sitemap
-sitemap.xml
-.nojekyll             tells GitHub Pages to serve the files as-is
+robots.txt                       allows everything, points at the sitemap
+sitemap.xml                      the homepage only; case studies excluded while unpublished
+.nojekyll                        tells GitHub Pages to serve the files as-is
 ```
 
-### Publishing
+### Layout
 
-Because the repository is named `iamzakirzr.github.io`, GitHub Pages serves it at the
-domain root. Enable it once under **Settings → Pages → Source: Deploy from a branch →
-`main` / `/ (root)`**; every push to `main` republishes.
+Two columns above 1024px: a sticky left column (name, title, availability, nav, socials)
+beside a scrolling right column. Below 1024px it collapses to one column and the nav
+detaches into a fixed bottom bar. Scroll-spy marks the active nav link via
+`IntersectionObserver`; with JavaScript off the links are still plain anchors.
+
+### Pending — things only Zakir can supply
+
+1. **Headshot.** Save it as `assets/photo.jpg` (square crop, 176px or larger, plain or
+   blurred background) and uncomment the `<img class="photo">` line at the top of
+   `<aside class="side">` in `index.html`.
+2. **Metric baselines.** The impact grid shows bare percentages. A before→after pair is a
+   much stronger claim. Each tile carries a `TODO(zakir)` comment with the markup:
+   `<div class="metric-value"><span class="from">4h</span> <span class="arrow">→</span> 1h</div>`
+3. **Case-study detail.** Each draft has amber `[Needs Zakir: …]` blocks marking the
+   judgement calls — why those test cases, what was traded off, what the outcome was, what
+   you'd change. Those are the parts that make it a case study rather than a project blurb.
+4. **The illustrative eval scores.** The hero terminal is labelled as a sample because the
+   numbers in it are not measured. Real numbers from the IQVIA chatbot work would be
+   stronger than any label — swap them in if they're shareable.
+
+### Publishing the case studies
+
+Once the `[Needs Zakir: …]` blocks in a page are filled:
+
+1. Delete that page's `<meta name="robots" content="noindex, nofollow">`.
+2. In `index.html`, uncomment the `PUBLISH STEP: case studies` block and add a
+   `case studies` link to the nav.
+3. Add the page's URL to `sitemap.xml`.
 
 ### Editing
 
-Everything lives in `index.html`, in document order: `<head>` metadata, then one
-`<style>` block, then the sections (`#about`, `#impact`, `#ai`, `#experience`, `#work`,
-`#recognition`, `#contact`). Colours are CSS custom properties on `:root`. The JSON-LD
-`Person` block at the bottom mirrors the visible content — update both when the résumé
-changes.
+Everything lives in `index.html` in document order: `<head>` metadata, one `<style>` block,
+the left column, then the right-column sections (`#about`, `#impact`, `#ai`, `#experience`,
+`#work`, `#recognition`, `#contact`), then the scroll-spy script and JSON-LD. Colours are
+CSS custom properties on `:root`. The case-study pages copy the same `<style>` block — a
+palette change has to be applied to all four files.
 
-The page deliberately omits a phone number and a downloadable résumé PDF, since it is
-public and crawlable; the contact section uses a `mailto:` with a "Request résumé"
-subject instead.
+The page deliberately omits a phone number, a location, and a downloadable résumé PDF,
+since it is public and crawlable; the contact section uses a `mailto:` with a "Request
+résumé" subject instead.
 
-`assets/og-image.png` is a screenshot of a small HTML card rendered at exactly
-1200×630. LinkedIn needs a raster image and caches aggressively, so validate any
-replacement with LinkedIn's Post Inspector.
+`assets/og-image.png` is a screenshot of a small HTML card rendered at exactly 1200×630.
+LinkedIn needs a raster image and caches aggressively, so validate any replacement with
+LinkedIn's Post Inspector.
