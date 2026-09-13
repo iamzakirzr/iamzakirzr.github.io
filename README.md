@@ -71,16 +71,13 @@ detaches into a fixed bottom bar. Scroll-spy marks the active nav link via
 
 ### Pending — things only Zakir can supply
 
-1. **Headshot.** Save it as `assets/photo.jpg` (square crop, 176px or larger, plain or
-   blurred background) and uncomment the `<img class="photo">` line at the top of
-   `<aside class="side">` in `index.html`.
-2. **Metric baselines.** The impact grid shows bare percentages. A before→after pair is a
+1. **Metric baselines.** The impact grid shows bare percentages. A before→after pair is a
    much stronger claim. Each tile carries a `TODO(zakir)` comment with the markup:
    `<div class="metric-value"><span class="from">4h</span> <span class="arrow">→</span> 1h</div>`
-3. **Case-study detail.** Each draft has amber `[Needs Zakir: …]` blocks marking the
+2. **Case-study detail.** Each draft has amber `[Needs Zakir: …]` blocks marking the
    judgement calls — why those test cases, what was traded off, what the outcome was, what
    you'd change. Those are the parts that make it a case study rather than a project blurb.
-4. **The illustrative eval scores.** The hero terminal is labelled as a sample because the
+3. **The illustrative eval scores.** The hero terminal is labelled as a sample because the
    numbers in it are not measured. Real numbers from the IQVIA chatbot work would be
    stronger than any label — swap them in if they're shareable.
 
@@ -92,6 +89,18 @@ Once the `[Needs Zakir: …]` blocks in a page are filled:
 2. In `index.html`, uncomment the `PUBLISH STEP: case studies` block and add a
    `case studies` link to the nav.
 3. Add the page's URL to `sitemap.xml`.
+
+### The photo
+
+`assets/photo.jpg` is a 352×352 crop (4× the 88px slot) taken from a full-body source
+photo: region 660×660 at offset 575,66 of the 2576×1450 original, framed so the head fills
+about 64% of the circle with the eyes near the upper third. The same face appears on
+`assets/og-image.png`.
+
+Replacing it: crop square, keep the head around 60–70% of the frame height, export at 352px
+or larger, and remember the page renders it as an 88px circle — corners are discarded, so
+centre the face. A photo without sunglasses would read better at that size; eyes are the
+only feature that survives a thumbnail.
 
 ### Editing
 
