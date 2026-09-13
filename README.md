@@ -44,4 +44,39 @@ LLM-driven feature is fit to ship.
 
 ---
 
-<sub>Full background, project detail and contact: <a href="https://iamzakirzr.github.io/">iamzakirzr.github.io</a> — source in <a href="./docs">/docs</a>.</sub>
+## About this repository
+
+This is the source of **[iamzakirzr.github.io](https://iamzakirzr.github.io/)** — a
+single page of hand-written HTML with an inline stylesheet. No framework, no npm, no
+build step, no Jekyll. Open `index.html` in a browser and that is the whole thing.
+
+```
+index.html            the page (content + styles + JSON-LD)
+assets/og-image.png   1200x630 link preview card for LinkedIn / X / Slack
+assets/favicon.svg
+robots.txt            allows everything, points at the sitemap
+sitemap.xml
+.nojekyll             tells GitHub Pages to serve the files as-is
+```
+
+### Publishing
+
+Because the repository is named `iamzakirzr.github.io`, GitHub Pages serves it at the
+domain root. Enable it once under **Settings → Pages → Source: Deploy from a branch →
+`main` / `/ (root)`**; every push to `main` republishes.
+
+### Editing
+
+Everything lives in `index.html`, in document order: `<head>` metadata, then one
+`<style>` block, then the sections (`#about`, `#impact`, `#ai`, `#experience`, `#work`,
+`#recognition`, `#contact`). Colours are CSS custom properties on `:root`. The JSON-LD
+`Person` block at the bottom mirrors the visible content — update both when the résumé
+changes.
+
+The page deliberately omits a phone number and a downloadable résumé PDF, since it is
+public and crawlable; the contact section uses a `mailto:` with a "Request résumé"
+subject instead.
+
+`assets/og-image.png` is a screenshot of a small HTML card rendered at exactly
+1200×630. LinkedIn needs a raster image and caches aggressively, so validate any
+replacement with LinkedIn's Post Inspector.
