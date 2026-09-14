@@ -75,8 +75,20 @@ repeats the same facts, so update both together.
 
 Work is organised by company, not by product. Each project card sits inside the employer
 block it belongs to, so nothing floats loose — IQVIA, Mindtree and Indium are employers,
-the products underneath them are what I tested there. Any number that goes on this page has
-to be one I can back when someone asks how I measured it.
+the products underneath them are what I tested there. Every card carries at least two
+bullets and its own stack; a card that is only a title is not worth the space. The
+"selected work" chips at the top of that section are the shortcut straight to them, so
+every chip has to point at a card that exists. Any number that goes on this page has to be
+one I can back when someone asks how I measured it.
+
+Page Object Model, BDD and iSAFE are framework *designs*, not tools. They live in prose and
+in the Design row of the skill matrix — never chipped in a tag list beside Selenium.
+
+The impact section has exactly one hero figure and everything else is a smaller stat tile,
+so there is one number the eye lands on first. Meter tracks are a translucent step of the
+fill's own colour rather than a flat grey, which keeps the state readable across the whole
+bar. Stat values are set in Inter, not Space Grotesk — a display face on a number reads as
+decoration.
 
 The years-of-experience tile carries `data-since="2018-03-01"` and a short script works the
 figure out at load. The text in the markup is the fallback for anyone without JavaScript, so
