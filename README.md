@@ -19,7 +19,7 @@ suites, and lately the evaluation harnesses that decide whether an LLM feature i
 to ship.
 
 - 🏗️ **Frameworks** · Playwright, Selenium, Cypress, AccelQ and Squish in Python and C#,
-  Page Object Model over reusable libraries, UI, API and SQL in the same run
+  Page Object Model as the framework design, UI, API, Kafka events and SQL in one run
 - ⚙️ **Pipelines** · Azure DevOps nightly regression, GitHub Actions on pull requests,
   Jenkins across a 20-machine grid, suites running against Kubernetes environments
 - 🧪 **AI quality** · LLM, RAG and agentic systems: faithfulness, context precision,
@@ -40,6 +40,7 @@ to ship.
 ![Jenkins](https://img.shields.io/badge/Jenkins-18222F?style=flat-square&logo=jenkins&logoColor=35D399)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-18222F?style=flat-square&logo=githubactions&logoColor=35D399)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-18222F?style=flat-square&logo=kubernetes&logoColor=35D399)
+![Kafka](https://img.shields.io/badge/Kafka-18222F?style=flat-square&logo=apachekafka&logoColor=35D399)
 ![Appium](https://img.shields.io/badge/Appium-18222F?style=flat-square&logo=appium&logoColor=35D399)
 ![Docker](https://img.shields.io/badge/Docker-18222F?style=flat-square&logo=docker&logoColor=35D399)
 ![JMeter](https://img.shields.io/badge/JMeter-18222F?style=flat-square&logo=apache&logoColor=35D399)
@@ -72,7 +73,9 @@ Sections in `index.html` run in the order they appear on the page: `#about`, `#i
 `#engineering`, `#ai`, `#experience`, `#work`, `#recognition`, `#contact`. The JSON-LD at the bottom repeats
 the same facts, so update both together.
 
-The hero panel shows the shape of the suite, not results. Any number that goes on
+The hero panel shows the shape of the suite, not results. IQVIA, Mindtree and Indium are
+employers and belong in the experience section; the strip under the hero is for products
+I tested, which is a different list. Any number that goes on
 this page has to be one I can back when someone asks how I measured it.
 
 No phone number, no address, no CV to download. The page is public and gets crawled, so
