@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed Zakir Hussain — Senior SDET, AI Quality Engineering</title>
-<meta name="description" content="Senior QA Engineer in healthcare and life sciences at IQVIA and Mindtree since 2018. LLM, RAG and agentic AI evaluation with DeepEval and RAGAS, plus test automation frameworks in Python and C# wired into Azure DevOps.">
+<meta name="description" content="Senior SDET in healthcare and life sciences at IQVIA and Mindtree since 2018. Test automation frameworks in Playwright, Selenium, Python and C# wired into Azure DevOps and GitHub Actions, plus LLM, RAG and agentic AI evaluation with DeepEval and RAGAS.">
 <meta name="author" content="Mohamed Zakir Hussain">
 <link rel="canonical" href="https://iamzakirzr.github.io/">
 <meta name="theme-color" content="#0D131B">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Mohamed Zakir Hussain">
 <meta property="og:title" content="Mohamed Zakir Hussain — Senior SDET, AI Quality Engineering">
-<meta property="og:description" content="Testing enterprise platforms in healthcare and life sciences since 2018. Now proving LLM, RAG and agentic AI systems actually work — DeepEval, RAGAS, Playwright, Azure DevOps.">
+<meta property="og:description" content="Test automation architecture across healthcare and life sciences since 2018 — Playwright, Selenium, Python, C#, Azure DevOps — and the evaluation harnesses that decide whether an LLM feature ships.">
 <meta property="og:url" content="https://iamzakirzr.github.io/">
 <meta property="og:image" content="https://iamzakirzr.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="Mohamed Zakir Hussain — Senior SDET, AI Quality Engineering">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mohamed Zakir Hussain — Senior SDET, AI Quality Engineering">
-<meta name="twitter:description" content="Testing enterprise platforms in healthcare and life sciences since 2018. Now proving LLM, RAG and agentic AI systems actually work.">
+<meta name="twitter:description" content="Test automation architecture across healthcare and life sciences since 2018, and the evaluation harnesses that decide whether an LLM feature ships.">
 <meta name="twitter:image" content="https://iamzakirzr.github.io/assets/og-image.png">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -85,7 +85,8 @@
     font-family:var(--display);font-size:clamp(30px,3.4vw,42px);font-weight:700;
     line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;
   }
-  .role{font-family:var(--display);font-size:18px;font-weight:600;color:var(--pass);margin-bottom:16px;}
+  .role{font-family:var(--display);font-size:19px;font-weight:600;color:var(--pass);margin-bottom:5px;}
+  .role-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.55;}
   .pitch{font-size:15px;color:var(--text-dim);max-width:380px;margin-bottom:22px;}
   .avail{
     display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
@@ -186,6 +187,7 @@
   .ai-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:19px 18px;}
   .ai-card h3{font-family:var(--display);font-size:15.5px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:9px;}
   .ai-card h3::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--ai);flex:none;}
+  .ai-card.eng h3::before{background:var(--pass);}
   .ai-card p{color:var(--text-dim);font-size:14px;margin-bottom:12px;}
   .tags{display:flex;flex-wrap:wrap;gap:6px;}
   .tags span{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);background:var(--bg-raised);padding:3px 9px;border-radius:4px;border:1px solid var(--border);}
@@ -246,19 +248,19 @@
       position:fixed;left:0;right:0;bottom:0;z-index:60;
       flex-direction:row;justify-content:center;gap:16px;margin:0;
       background:rgba(13,19,27,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-      border-top:1px solid var(--border);padding:11px 14px;font-size:11.5px;
-      overflow-x:auto;
+      border-top:1px solid var(--border);padding:9px 14px;font-size:11.5px;
+      flex-wrap:wrap;row-gap:6px;
     }
     .nav-links a{gap:0;}
     .nav-links a::before{display:none;}
-    body{padding-bottom:52px;}
+    body{padding-bottom:78px;}
     footer{margin-bottom:8px;}
   }
   @media(max-width:560px){
     .metrics-grid{grid-template-columns:1fr;}
     .exp-item{grid-template-columns:1fr;gap:6px;}
     .exp-time{padding-top:0;}
-    .nav-links{gap:13px;font-size:11px;justify-content:flex-start;}
+    .nav-links{gap:12px;font-size:11px;justify-content:center;}
   }
   @media(max-width:430px){
     .terminal-body{font-size:11px;padding:16px 13px 18px;}
@@ -283,13 +285,15 @@
     <img class="photo" src="assets/photo.jpg" width="88" height="88" alt="Mohamed Zakir Hussain" loading="eager" decoding="async">
     <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>zakir.qa</a>
     <h1>Mohamed Zakir Hussain</h1>
-    <p class="role">Senior SDET<br>AI Quality Engineering</p>
-    <p class="pitch">I make AI systems prove they work. Test automation across healthcare and life sciences since 2018, now building the evaluation harnesses that decide whether an LLM feature is fit to ship.</p>
+    <p class="role">Senior SDET</p>
+    <p class="role-sub">Test automation architecture &amp; AI quality engineering</p>
+    <p class="pitch">I make software prove it works. Building test automation across healthcare and life sciences since 2018, and lately the evaluation harnesses that decide whether an LLM feature is fit to ship.</p>
     <span class="avail"><i aria-hidden="true"></i>Open to opportunities</span>
 
     <nav class="nav-links" aria-label="Sections">
       <a href="#about">about</a>
       <a href="#impact">impact</a>
+      <a href="#engineering">engineering</a>
       <a href="#ai">ai quality</a>
       <a href="#experience">experience</a>
       <a href="#work">work</a>
@@ -309,16 +313,17 @@
       <div class="terminal">
         <div class="terminal-bar">
           <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-          <div class="label">evals/metrics.yaml</div>
+          <div class="label">tests/</div>
         </div>
         <div class="terminal-body">
-          <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">cat evals/metrics.yaml</span></div>
-          <div class="yaml-line" style="animation-delay:.3s"><span class="key">faithfulness</span><span class="note"># answer grounded in retrieved context</span></div>
-          <div class="yaml-line" style="animation-delay:.45s"><span class="key">context_precision</span><span class="note"># retrieval surfaced the right material</span></div>
-          <div class="yaml-line" style="animation-delay:.6s"><span class="key">answer_relevance</span><span class="note"># addresses the question actually asked</span></div>
-          <div class="yaml-line" style="animation-delay:.75s"><span class="key">tool_calling_accuracy</span><span class="note"># right tool, right arguments</span></div>
-          <div class="yaml-line" style="animation-delay:.9s"><span class="key">hallucination_rate</span><span class="note"># ungrounded claims per response</span></div>
-          <div class="terminal-sum" style="animation-delay:1.1s">thresholds enforced in CI &mdash; a drop fails the build</div>
+          <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">tree tests/ --dirs-only</span></div>
+          <div class="yaml-line" style="animation-delay:.25s"><span class="key">tests/</span></div>
+          <div class="yaml-line" style="animation-delay:.4s"><span class="key">&#9500;&#9472;&#9472; ui/</span><span class="note"># Playwright &middot; Selenium &middot; POM &middot; cross-browser</span></div>
+          <div class="yaml-line" style="animation-delay:.55s"><span class="key">&#9500;&#9472;&#9472; api/</span><span class="note"># contract and schema validation</span></div>
+          <div class="yaml-line" style="animation-delay:.7s"><span class="key">&#9500;&#9472;&#9472; db/</span><span class="note"># SQL data-integrity checks</span></div>
+          <div class="yaml-line" style="animation-delay:.85s"><span class="key">&#9500;&#9472;&#9472; perf/</span><span class="note"># k6 &middot; JMeter &middot; Artillery</span></div>
+          <div class="yaml-line" style="animation-delay:1s"><span class="key">&#9492;&#9472;&#9472; evals/</span><span class="note"># RAGAS &middot; DeepEval thresholds</span></div>
+          <div class="terminal-sum" style="animation-delay:1.2s">one estate &middot; Azure DevOps nightly, GitHub Actions on every PR</div>
         </div>
       </div>
 
@@ -339,7 +344,7 @@
         <p>I also lead a team of five QA engineers and own the STLC across Scrum, Kanban and Waterfall delivery models, which mostly means translating between what a test report says and what a release manager needs to hear.</p>
         <div class="chips">
           <span class="hl">DeepEval</span><span class="hl">RAGAS</span><span class="hl">LangSmith</span><span class="hl">Agentic AI</span>
-          <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Azure DevOps</span><span>Jenkins</span><span>Docker</span><span>JMeter</span><span>k6</span><span>SQL</span>
+          <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>Appium</span><span>TestNG</span><span>JMeter</span><span>k6</span><span>SQL</span>
         </div>
       </div>
     </section>
@@ -386,6 +391,33 @@
       </div>
     </section>
 
+    <section id="engineering">
+      <div class="eyebrow">test automation engineering</div>
+      <h2>How I build test automation</h2>
+      <div class="ai-grid">
+        <div class="ai-card eng">
+          <h3>Framework architecture</h3>
+          <p>Page Object Model over reusable libraries, so a new suite costs a fraction of what it used to and every test exercises the same helpers. One estate spanning Playwright, Selenium, Cypress, Squish and AccelQ in Python and C#, built to be something other engineers can work in rather than around.</p>
+          <div class="tags"><span>Playwright</span><span>Selenium</span><span>Page Object Model</span><span>Python</span><span>C#/.NET</span><span>PyTest</span><span>NUnit</span></div>
+        </div>
+        <div class="ai-card eng">
+          <h3>One suite, every layer</h3>
+          <p>A Python and Playwright framework validating UI, API and database in the same run. Contract and schema checks sit under the UI tests, and SQL-level assertions catch data-integrity faults directly instead of letting them surface later as a confusing screen.</p>
+          <div class="tags"><span>UI</span><span>API contracts</span><span>SQL validation</span><span>JavaScript</span><span>TypeScript</span><span>Robot Framework</span></div>
+        </div>
+        <div class="ai-card eng">
+          <h3>Pipelines and execution</h3>
+          <p>Azure DevOps running full regression nightly, GitHub Actions giving pull requests their own feedback loop, and Jenkins driving a 20-machine grid for cross-platform runs. Suites also execute against Kubernetes environments, so what passes in CI resembles what ships.</p>
+          <div class="tags"><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>PR validation</span></div>
+        </div>
+        <div class="ai-card eng">
+          <h3>Scale, platforms and load</h3>
+          <p>Performance and scalability work through JMeter, Artillery and k6 against APIs under load. Coverage reaches past the browser too: Windows, macOS and iOS desktop clients through Squish, and mobile through Appium.</p>
+          <div class="tags"><span>JMeter</span><span>k6</span><span>Artillery</span><span>Squish</span><span>Appium</span><span>Cross-platform</span></div>
+        </div>
+      </div>
+    </section>
+
     <section id="ai">
       <div class="eyebrow ai">ai quality engineering</div>
       <h2>Testing systems that don't behave the same way twice</h2>
@@ -422,9 +454,9 @@
         <div>
           <div class="exp-role">Senior QA Engineer &middot; Software Engineer 2</div>
           <div class="exp-org">IQVIA &middot; Healthcare &amp; Life Sciences</div>
-          <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python. The reusable libraries behind it pushed coverage up 25% and cut regression execution time by 75%. The Azure DevOps pipelines behind them run full regression daily, which took roughly 40% off the release feedback loop.</p>
+          <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python. The reusable libraries behind it pushed coverage up 25% and cut regression execution time by 75%. Azure DevOps runs full regression nightly, which took roughly 40% off the release feedback loop, and GitHub Actions gives pull requests a feedback loop of their own. A Python and Playwright framework covers UI, API and SQL layers in one run, and suites execute against Kubernetes environments so CI resembles production.</p>
           <p class="exp-desc">The other half of my work is AI quality: I own end-to-end QE for enterprise chatbot and RAG systems, build LLM evaluation suites in DeepEval and RAGAS around faithfulness, context precision and relevance, and validate multi-step agentic workflows for tool-calling accuracy, reasoning traces and context retention. Performance and scale testing runs through JMeter, Artillery and k6. Alongside that I mentor five QA engineers and manage the full STLC.</p>
-          <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>DeepEval</span><span>RAGAS</span><span>Azure DevOps</span><span>k6</span></div>
+          <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Kubernetes</span><span>DeepEval</span><span>RAGAS</span><span>k6</span></div>
         </div>
       </div>
 
@@ -433,8 +465,8 @@
         <div>
           <div class="exp-role">Senior Test Engineer</div>
           <div class="exp-org">Mindtree (now LTIMindtree)</div>
-          <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. I also owned test strategy and quality governance &mdash; standardising how the team handled QA process, defect management and quality reporting so release readiness stopped being a matter of opinion.</p>
-          <div class="tags"><span>Playwright</span><span>Cypress</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
+          <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. I also owned test strategy and quality governance &mdash; standardising how QA process, defect management and quality reporting worked across the SVT, performance and DevOps teams, so release readiness stopped being a matter of opinion.</p>
+          <div class="tags"><span>Playwright</span><span>Cypress</span><span>Python</span><span>JavaScript</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
         </div>
       </div>
 
@@ -565,12 +597,12 @@
   "@type":"Person",
   "name":"Mohamed Zakir Hussain",
   "jobTitle":"Senior QA Engineer / Software Engineer 2",
-  "description":"Senior SDET and AI quality engineer working across healthcare and life sciences platforms since 2018.",
+  "description":"Senior SDET building test automation frameworks and AI evaluation harnesses across healthcare and life sciences platforms since 2018.",
   "url":"https://iamzakirzr.github.io/",
   "email":"mailto:zakir9622@gmail.com",
   "worksFor":{"@type":"Organization","name":"IQVIA"},
   "alumniOf":{"@type":"CollegeOrUniversity","name":"Bharathidasan Engineering College"},
-  "knowsAbout":["LLM Evaluation","RAG Evaluation","Agentic AI Testing","RAGAS","DeepEval","Test Automation","Playwright","Selenium","Python","C#","Azure DevOps","Performance Testing","Quality Engineering"],
+  "knowsAbout":["Test Automation","Playwright","Selenium","Cypress","Python","C#","JavaScript","TypeScript","PyTest","NUnit","Page Object Model","API Testing","Database Testing","Azure DevOps","GitHub Actions","Jenkins","Kubernetes","Appium","Performance Testing","JMeter","k6","LLM Evaluation","RAG Evaluation","Agentic AI Testing","RAGAS","DeepEval","Quality Engineering","SDET"],
   "sameAs":["https://linkedin.com/in/zakirz","https://github.com/iamzakirzr"]
 }
 </script>
