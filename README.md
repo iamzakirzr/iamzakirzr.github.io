@@ -18,10 +18,12 @@ Software since 2018. I build the frameworks teams rely on to trust their regress
 suites, and lately the evaluation harnesses that decide whether an LLM feature is fit
 to ship.
 
-- 🧪 **Now** · quality engineering for LLM, RAG and agentic AI systems: faithfulness,
-  context precision, hallucination rate, tool-calling accuracy, prompt-injection probing
 - 🏗️ **Frameworks** · Playwright, Selenium, Cypress, AccelQ and Squish in Python and C#,
-  wired into Azure DevOps so regression runs daily instead of pre-release
+  Page Object Model over reusable libraries, UI, API and SQL in the same run
+- ⚙️ **Pipelines** · Azure DevOps nightly regression, GitHub Actions on pull requests,
+  Jenkins across a 20-machine grid, suites running against Kubernetes environments
+- 🧪 **AI quality** · LLM, RAG and agentic systems: faithfulness, context precision,
+  hallucination rate, tool-calling accuracy, prompt-injection probing
 - 📉 **Impact** · regression execution time down 75%, release feedback loop 40% faster,
   automation coverage up 25%
 - 👥 **Team** · five QA engineers, across Scrum, Kanban and Waterfall
@@ -36,6 +38,9 @@ to ship.
 ![PyTest](https://img.shields.io/badge/PyTest-18222F?style=flat-square&logo=pytest&logoColor=35D399)
 ![Azure DevOps](https://img.shields.io/badge/Azure%20DevOps-18222F?style=flat-square&logo=azuredevops&logoColor=35D399)
 ![Jenkins](https://img.shields.io/badge/Jenkins-18222F?style=flat-square&logo=jenkins&logoColor=35D399)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-18222F?style=flat-square&logo=githubactions&logoColor=35D399)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-18222F?style=flat-square&logo=kubernetes&logoColor=35D399)
+![Appium](https://img.shields.io/badge/Appium-18222F?style=flat-square&logo=appium&logoColor=35D399)
 ![Docker](https://img.shields.io/badge/Docker-18222F?style=flat-square&logo=docker&logoColor=35D399)
 ![JMeter](https://img.shields.io/badge/JMeter-18222F?style=flat-square&logo=apache&logoColor=35D399)
 ![RAGAS](https://img.shields.io/badge/RAGAS-18222F?style=flat-square&logoColor=A78BFA)
@@ -64,10 +69,10 @@ stacks and the nav moves to a fixed bar at the bottom. Colours are CSS variables
 `:root`, so a palette change is one block.
 
 Sections in `index.html` run in the order they appear on the page: `#about`, `#impact`,
-`#ai`, `#experience`, `#work`, `#recognition`, `#contact`. The JSON-LD at the bottom repeats
+`#engineering`, `#ai`, `#experience`, `#work`, `#recognition`, `#contact`. The JSON-LD at the bottom repeats
 the same facts, so update both together.
 
-The hero panel lists the metrics I evaluate against, not scores. Any number that goes on
+The hero panel shows the shape of the suite, not results. Any number that goes on
 this page has to be one I can back when someone asks how I measured it.
 
 No phone number, no address, no CV to download. The page is public and gets crawled, so
