@@ -72,8 +72,9 @@
   /* ---------- LEFT COLUMN ---------- */
   .side{
     position:sticky;top:0;align-self:start;min-width:0;
-    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    padding-block:64px;
+    min-height:100vh;max-height:100vh;overflow-y:auto;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-block:48px;
   }
   .logo{font-family:var(--mono);font-size:13px;color:var(--pass);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;}
   .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--pass);box-shadow:0 0 8px var(--pass-glow);flex:none;}
@@ -89,14 +90,15 @@
   .role-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.55;}
   .pitch{font-size:15px;color:var(--text-dim);max-width:380px;margin-bottom:22px;}
   .avail{
+    margin-bottom:0;
     display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
     font-family:var(--mono);font-size:11.5px;color:var(--pass);
     background:rgba(53,211,153,.07);border:1px solid var(--pass-dim);
-    padding:5px 12px;border-radius:20px;margin-bottom:34px;
+    padding:5px 12px;border-radius:20px;margin-bottom:28px;
   }
   .avail i{width:6px;height:6px;border-radius:50%;background:var(--pass);flex:none;box-shadow:0 0 7px var(--pass-glow);}
 
-  .nav-links{display:flex;flex-direction:column;gap:13px;font-family:var(--mono);font-size:12.5px;margin-bottom:34px;}
+  .nav-links{display:flex;flex-direction:column;gap:11px;font-family:var(--mono);font-size:12.5px;margin-bottom:34px;}
   .nav-links a{
     color:var(--text-dim);display:inline-flex;align-items:center;gap:10px;
     transition:color .15s ease;width:max-content;
@@ -109,6 +111,7 @@
   .nav-links a:hover::before{width:38px;background:var(--text-dim);}
   .nav-links a[aria-current="true"]{color:var(--pass);}
   .nav-links a[aria-current="true"]::before{width:44px;background:var(--pass);}
+  .side .nav-links{margin-bottom:28px;}
 
   .socials{display:flex;gap:10px;flex-wrap:wrap;}
   .socials a{
@@ -237,7 +240,7 @@
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:1023px){
     .shell{grid-template-columns:1fr;gap:0;padding:0 24px;}
-    .side{position:static;min-height:0;padding-block:52px 8px;justify-content:flex-start;}
+    .side{position:static;min-height:0;max-height:none;overflow:visible;padding-block:52px 8px;justify-content:flex-start;}
     .side h1{font-size:clamp(29px,7vw,38px);}
     .pitch{max-width:560px;}
     .avail{margin-bottom:26px;}
@@ -286,8 +289,8 @@
     <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>zakir.qa</a>
     <h1>Mohamed Zakir Hussain</h1>
     <p class="role">Senior SDET</p>
-    <p class="role-sub">Test automation architecture &amp; AI quality engineering</p>
-    <p class="pitch">I make software prove it works. Building test automation across healthcare and life sciences since 2018, and lately the evaluation harnesses that decide whether an LLM feature is fit to ship.</p>
+    <p class="role-sub">Test automation &amp; AI quality engineering</p>
+    <p class="pitch">I make software prove it works. Test automation across healthcare and life sciences since 2018, and the evaluation harnesses that decide whether an LLM feature ships.</p>
     <span class="avail"><i aria-hidden="true"></i>Open to opportunities</span>
 
     <nav class="nav-links" aria-label="Sections">
@@ -318,19 +321,20 @@
         <div class="terminal-body">
           <div class="terminal-line" style="animation-delay:.05s">$ <span class="cmd">tree tests/ --dirs-only</span></div>
           <div class="yaml-line" style="animation-delay:.25s"><span class="key">tests/</span></div>
-          <div class="yaml-line" style="animation-delay:.4s"><span class="key">&#9500;&#9472;&#9472; ui/</span><span class="note"># Playwright &middot; Selenium &middot; POM &middot; cross-browser</span></div>
+          <div class="yaml-line" style="animation-delay:.4s"><span class="key">&#9500;&#9472;&#9472; ui/</span><span class="note"># Playwright &middot; Selenium &middot; Cypress</span></div>
           <div class="yaml-line" style="animation-delay:.55s"><span class="key">&#9500;&#9472;&#9472; api/</span><span class="note"># contract and schema validation</span></div>
-          <div class="yaml-line" style="animation-delay:.7s"><span class="key">&#9500;&#9472;&#9472; db/</span><span class="note"># SQL data-integrity checks</span></div>
-          <div class="yaml-line" style="animation-delay:.85s"><span class="key">&#9500;&#9472;&#9472; perf/</span><span class="note"># k6 &middot; JMeter &middot; Artillery</span></div>
-          <div class="yaml-line" style="animation-delay:1s"><span class="key">&#9492;&#9472;&#9472; evals/</span><span class="note"># RAGAS &middot; DeepEval thresholds</span></div>
-          <div class="terminal-sum" style="animation-delay:1.2s">one estate &middot; Azure DevOps nightly, GitHub Actions on every PR</div>
+          <div class="yaml-line" style="animation-delay:.65s"><span class="key">&#9500;&#9472;&#9472; events/</span><span class="note"># Kafka topics and consumer behaviour</span></div>
+          <div class="yaml-line" style="animation-delay:.8s"><span class="key">&#9500;&#9472;&#9472; db/</span><span class="note"># SQL data-integrity checks</span></div>
+          <div class="yaml-line" style="animation-delay:.95s"><span class="key">&#9500;&#9472;&#9472; perf/</span><span class="note"># k6 &middot; JMeter &middot; Artillery</span></div>
+          <div class="yaml-line" style="animation-delay:1.1s"><span class="key">&#9492;&#9472;&#9472; evals/</span><span class="note"># RAGAS &middot; DeepEval thresholds</span></div>
+          <div class="terminal-sum" style="animation-delay:1.3s">one estate &middot; Azure DevOps nightly, GitHub Actions on every PR</div>
         </div>
       </div>
 
       <div class="products">
         <div class="products-label">Products I've put under test</div>
         <div class="wordmarks">
-          <span>IQVIA</span><span>Microsoft Power Apps</span><span>Surgimap &mdash; Globus</span><span>Secret Server &mdash; Thycotic/Delinea</span><span>Icomm Connect</span>
+          <span>Microsoft Power Apps</span><span>Surgimap &mdash; Globus</span><span>Secret Server &mdash; Thycotic/Delinea</span><span>Icomm Connect</span><span>TeamworkIQ</span>
         </div>
       </div>
     </section>
@@ -344,7 +348,7 @@
         <p>I also lead a team of five QA engineers and own the STLC across Scrum, Kanban and Waterfall delivery models, which mostly means translating between what a test report says and what a release manager needs to hear.</p>
         <div class="chips">
           <span class="hl">DeepEval</span><span class="hl">RAGAS</span><span class="hl">LangSmith</span><span class="hl">Agentic AI</span>
-          <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>Appium</span><span>TestNG</span><span>JMeter</span><span>k6</span><span>SQL</span>
+          <span>Python</span><span>C#/.NET</span><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span><span>Squish</span><span>Robot Framework</span><span>Kafka</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>Appium</span><span>TestNG</span><span>JMeter</span><span>k6</span><span>SQL</span>
         </div>
       </div>
     </section>
@@ -385,8 +389,8 @@
         </div>
         <div class="metric">
           <div class="metric-label">Scope under test</div>
-          <div class="metric-value scope">web &middot; API &middot; database<br>desktop &middot; mobile</div>
-          <div class="metric-sub">one framework estate spanning all five, Windows and macOS included</div>
+          <div class="metric-value scope">web &middot; API &middot; events<br>database &middot; desktop &middot; mobile</div>
+          <div class="metric-sub">one framework estate spanning all six, Windows and macOS included</div>
         </div>
       </div>
     </section>
@@ -396,19 +400,21 @@
       <h2>How I build test automation</h2>
       <div class="ai-grid">
         <div class="ai-card eng">
-          <h3>Framework architecture</h3>
-          <p>Page Object Model over reusable libraries, so a new suite costs a fraction of what it used to and every test exercises the same helpers. One estate spanning Playwright, Selenium, Cypress, Squish and AccelQ in Python and C#, built to be something other engineers can work in rather than around.</p>
-          <div class="tags"><span>Playwright</span><span>Selenium</span><span>Page Object Model</span><span>Python</span><span>C#/.NET</span><span>PyTest</span><span>NUnit</span></div>
+          <h3>Framework design</h3>
+          <p>Page Object Model is the design every framework I build sits on. Locators and page behaviour live in one place, so a UI change is one edit instead of fifty, and the tests above read as intent rather than selectors. Reusable libraries sit under that, shared across suites, which is what makes a new test cost hours rather than days.</p>
+          <p>The same design carries across Playwright, Selenium and Cypress on the web, and Squish and AccelQ beyond it, in Python and C# alike. Built to be something other engineers can work in rather than around.</p>
+          <div class="tags"><span>Playwright</span><span>Selenium</span><span>Cypress</span><span>Python</span><span>C#/.NET</span><span>PyTest</span><span>NUnit</span><span>AccelQ</span></div>
         </div>
         <div class="ai-card eng">
           <h3>One suite, every layer</h3>
           <p>A Python and Playwright framework validating UI, API and database in the same run. Contract and schema checks sit under the UI tests, and SQL-level assertions catch data-integrity faults directly instead of letting them surface later as a confusing screen.</p>
-          <div class="tags"><span>UI</span><span>API contracts</span><span>SQL validation</span><span>JavaScript</span><span>TypeScript</span><span>Robot Framework</span></div>
+          <p>Where the system is event-driven, that extends to the message layer: asserting what actually lands on a Kafka topic, and how consumers behave once it does. A queue that silently drops a message fails no UI test, which is exactly why it needs its own.</p>
+          <div class="tags"><span>UI</span><span>API contracts</span><span>Kafka</span><span>Event streams</span><span>SQL validation</span><span>JavaScript</span><span>TypeScript</span></div>
         </div>
         <div class="ai-card eng">
           <h3>Pipelines and execution</h3>
           <p>Azure DevOps running full regression nightly, GitHub Actions giving pull requests their own feedback loop, and Jenkins driving a 20-machine grid for cross-platform runs. Suites also execute against Kubernetes environments, so what passes in CI resembles what ships.</p>
-          <div class="tags"><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>PR validation</span></div>
+          <div class="tags"><span>Kafka</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>Kubernetes</span><span>Docker</span><span>PR validation</span></div>
         </div>
         <div class="ai-card eng">
           <h3>Scale, platforms and load</h3>
@@ -456,7 +462,7 @@
           <div class="exp-org">IQVIA &middot; Healthcare &amp; Life Sciences</div>
           <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python. The reusable libraries behind it pushed coverage up 25% and cut regression execution time by 75%. Azure DevOps runs full regression nightly, which took roughly 40% off the release feedback loop, and GitHub Actions gives pull requests a feedback loop of their own. A Python and Playwright framework covers UI, API and SQL layers in one run, and suites execute against Kubernetes environments so CI resembles production.</p>
           <p class="exp-desc">The other half of my work is AI quality: I own end-to-end QE for enterprise chatbot and RAG systems, build LLM evaluation suites in DeepEval and RAGAS around faithfulness, context precision and relevance, and validate multi-step agentic workflows for tool-calling accuracy, reasoning traces and context retention. Performance and scale testing runs through JMeter, Artillery and k6. Alongside that I mentor five QA engineers and manage the full STLC.</p>
-          <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Kubernetes</span><span>DeepEval</span><span>RAGAS</span><span>k6</span></div>
+          <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>Kafka</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Kubernetes</span><span>DeepEval</span><span>RAGAS</span><span>k6</span></div>
         </div>
       </div>
 
@@ -465,8 +471,9 @@
         <div>
           <div class="exp-role">Senior Test Engineer</div>
           <div class="exp-org">Mindtree (now LTIMindtree)</div>
-          <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. I also owned test strategy and quality governance &mdash; standardising how QA process, defect management and quality reporting worked across the SVT, performance and DevOps teams, so release readiness stopped being a matter of opinion.</p>
-          <div class="tags"><span>Playwright</span><span>Cypress</span><span>Python</span><span>JavaScript</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
+          <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. Coverage reached past request and response into the event layer, validating Kafka topics and the events published to them alongside the UI and API suites.</p>
+          <p class="exp-desc">I also owned test strategy and quality governance, standardising how QA process, defect management and quality reporting worked across the SVT, performance and DevOps teams, so release readiness stopped being a matter of opinion.</p>
+          <div class="tags"><span>Playwright</span><span>Cypress</span><span>Python</span><span>JavaScript</span><span>Kafka</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
         </div>
       </div>
 
@@ -500,7 +507,7 @@
           <div class="project-badge">&#10003; Imaging &amp; simulation</div>
         </div>
         <p class="project-desc">Architected a Python, POM-driven automation framework integrated with Squish and BDD, giving acceptance coverage across Windows, macOS and iOS from one suite. Backed it with Jenkins CI across <strong>20 virtual machines</strong> for scheduled regression, so cross-platform feedback arrived every morning instead of every release.</p>
-        <div class="tags"><span>Python</span><span>Squish</span><span>BDD</span><span>Page Object Model</span><span>Jenkins</span><span>20-VM grid</span></div>
+        <div class="tags"><span>Python</span><span>Squish</span><span>BDD</span><span>Jenkins</span><span>20-VM grid</span></div>
       </div>
 
       <div class="project-card">
@@ -518,7 +525,7 @@
           <div class="project-badge">&#10003; Privileged access security</div>
         </div>
         <p class="project-desc">Led end-to-end QA automation for web, server and Windows applications on a privileged-account protection product, using POM with C#/.NET, Java and NUnit. Embedded Azure Pipelines into the testing lifecycle so defect detection and quality visibility moved to every commit rather than every milestone.</p>
-        <div class="tags"><span>C#/.NET</span><span>NUnit</span><span>Java</span><span>Page Object Model</span><span>Azure Pipelines</span></div>
+        <div class="tags"><span>C#/.NET</span><span>NUnit</span><span>Java</span><span>Azure Pipelines</span></div>
       </div>
 
       <p class="also"><strong>Also:</strong> <strong>Tactal</strong> (Icomm Connect) &mdash; Java and Selenium click-to-call automation on an iSAFE data-driven framework, with Jenkins and JIRA wired into the Agile STLC. <strong>TeamworkIQ</strong> &mdash; hybrid PyTest and Selenium suites for employee management software, executed through Azure Pipelines.</p>
@@ -602,7 +609,7 @@
   "email":"mailto:zakir9622@gmail.com",
   "worksFor":{"@type":"Organization","name":"IQVIA"},
   "alumniOf":{"@type":"CollegeOrUniversity","name":"Bharathidasan Engineering College"},
-  "knowsAbout":["Test Automation","Playwright","Selenium","Cypress","Python","C#","JavaScript","TypeScript","PyTest","NUnit","Page Object Model","API Testing","Database Testing","Azure DevOps","GitHub Actions","Jenkins","Kubernetes","Appium","Performance Testing","JMeter","k6","LLM Evaluation","RAG Evaluation","Agentic AI Testing","RAGAS","DeepEval","Quality Engineering","SDET"],
+  "knowsAbout":["Test Automation","Playwright","Selenium","Cypress","Python","C#","JavaScript","TypeScript","PyTest","NUnit","Page Object Model","API Testing","Database Testing","Event-Driven Testing","Apache Kafka","Azure DevOps","GitHub Actions","Jenkins","Kubernetes","Appium","Performance Testing","JMeter","k6","LLM Evaluation","RAG Evaluation","Agentic AI Testing","RAGAS","DeepEval","Quality Engineering","SDET"],
   "sameAs":["https://linkedin.com/in/zakirz","https://github.com/iamzakirzr"]
 }
 </script>
