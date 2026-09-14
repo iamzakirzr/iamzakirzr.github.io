@@ -150,13 +150,6 @@
   @keyframes fadeIn{to{opacity:1;}}
 
   /* products strip */
-  .products{margin-top:26px;}
-  .products-label{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:11px;}
-  .wordmarks{display:flex;flex-wrap:wrap;gap:8px;}
-  .wordmarks span{
-    font-family:var(--display);font-size:13px;font-weight:600;color:var(--text-dim);
-    border:1px solid var(--border-soft);border-radius:6px;padding:6px 12px;
-  }
 
   /* prose */
   .prose p{color:var(--text-dim);font-size:15px;margin-bottom:14px;}
@@ -206,7 +199,10 @@
   .exp-desc:last-of-type{margin-bottom:12px;}
 
   /* projects */
-  .project-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:13px;}
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:11px;}
+  .exp-projects{margin-top:16px;padding-left:14px;border-left:1px solid var(--border-soft);}
+  .exp-projects .project-title{font-size:15px;}
+  .exp-projects .also{margin-top:0;border-left:none;padding-left:0;font-size:13px;}
   .project-card:last-of-type{margin-bottom:0;}
   .project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
   .project-title{font-family:var(--display);font-size:16.5px;font-weight:600;}
@@ -299,7 +295,6 @@
       <a href="#engineering">engineering</a>
       <a href="#ai">ai quality</a>
       <a href="#experience">experience</a>
-      <a href="#work">work</a>
       <a href="#contact">contact</a>
     </nav>
 
@@ -331,12 +326,6 @@
         </div>
       </div>
 
-      <div class="products">
-        <div class="products-label">Products I've put under test</div>
-        <div class="wordmarks">
-          <span>Microsoft Power Apps</span><span>Surgimap &mdash; Globus</span><span>Secret Server &mdash; Thycotic/Delinea</span><span>Icomm Connect</span><span>TeamworkIQ</span>
-        </div>
-      </div>
     </section>
 
     <section id="about">
@@ -382,10 +371,10 @@
           <div class="metric-sub">QA team, full STLC across Scrum, Kanban and Waterfall</div>
         </div>
         <div class="metric">
-          <div class="metric-label">Testing since</div>
-          <div class="metric-value amber">2018</div>
+          <div class="metric-label">Experience</div>
+          <div class="metric-value amber" data-since="2018-03-01">since Mar 2018</div>
           <div class="metric-bar"><i class="amber" style="width:85%"></i></div>
-          <div class="metric-sub">healthcare, life sciences and enterprise platforms</div>
+          <div class="metric-sub">healthcare, life sciences and enterprise platforms, from March 2018</div>
         </div>
         <div class="metric">
           <div class="metric-label">Scope under test</div>
@@ -453,7 +442,7 @@
 
     <section id="experience">
       <div class="eyebrow">experience</div>
-      <h2>Where I've been</h2>
+      <h2>Where I've been, and what I built there</h2>
 
       <div class="exp-item">
         <div class="exp-time">Sep 2022 &mdash; Present</div>
@@ -463,6 +452,13 @@
           <p class="exp-desc">I lead automation framework design across Playwright, AccelQ, Selenium, C# and Python. The reusable libraries behind it pushed coverage up 25% and cut regression execution time by 75%. Azure DevOps runs full regression nightly, which took roughly 40% off the release feedback loop, and GitHub Actions gives pull requests a feedback loop of their own. A Python and Playwright framework covers UI, API and SQL layers in one run, and suites execute against Kubernetes environments so CI resembles production.</p>
           <p class="exp-desc">The other half of my work is AI quality: I own end-to-end QE for enterprise chatbot and RAG systems, build LLM evaluation suites in DeepEval and RAGAS around faithfulness, context precision and relevance, and validate multi-step agentic workflows for tool-calling accuracy, reasoning traces and context retention. Performance and scale testing runs through JMeter, Artillery and k6. Alongside that I mentor five QA engineers and manage the full STLC.</p>
           <div class="tags"><span>Playwright</span><span>AccelQ</span><span>C#</span><span>Python</span><span>Kafka</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Kubernetes</span><span>DeepEval</span><span>RAGAS</span><span>k6</span></div>
+          <div class="exp-projects">
+            <div class="project-card">
+            <div class="project-head">
+            <div class="project-title">AI Chatbot Evaluation Framework</div>
+            <div class="project-badge ai">&#10003; IQVIA</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -474,6 +470,13 @@
           <p class="exp-desc">Designed scalable automation frameworks in Playwright, Cypress, Python and JavaScript, integrated with Azure CI/CD for nightly execution, with UI and API coverage through PyTest and Robot Framework. Coverage reached past request and response into the event layer, validating Kafka topics and the events published to them alongside the UI and API suites.</p>
           <p class="exp-desc">I also owned test strategy and quality governance, standardising how QA process, defect management and quality reporting worked across the SVT, performance and DevOps teams, so release readiness stopped being a matter of opinion.</p>
           <div class="tags"><span>Playwright</span><span>Cypress</span><span>Python</span><span>JavaScript</span><span>Kafka</span><span>PyTest</span><span>Robot Framework</span><span>Azure CI/CD</span></div>
+          <div class="exp-projects">
+            <div class="project-card">
+            <div class="project-head">
+            <div class="project-title">Power Apps &mdash; Microsoft</div>
+            <div class="project-badge">&#10003; Low-code platform</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -484,51 +487,21 @@
           <div class="exp-org">Indium Software</div>
           <p class="exp-desc">Built and maintained core test automation frameworks across several languages and client platforms, strengthening coverage and overall application quality. Much of the job was turning vague functional and technical requirements into test plans that held up under scrutiny, then validating functionality and performance directly with clients and cross-functional teams.</p>
           <div class="tags"><span>Java</span><span>Selenium</span><span>Squish</span><span>Jenkins</span><span>JIRA</span></div>
+          <div class="exp-projects">
+            <div class="project-card">
+            <div class="project-head">
+            <div class="project-title">Surgimap &mdash; Globus</div>
+            <div class="project-badge">&#10003; Imaging &amp; simulation</div>
+            </div>
+            <div class="project-card">
+            <div class="project-head">
+            <div class="project-title">Secret Server &mdash; Thycotic (now Delinea)</div>
+            <div class="project-badge">&#10003; Privileged access security</div>
+            </div>
+            <p class="also"><strong>Also:</strong> <strong>Tactal</strong> (Icomm Connect) &mdash; Java and Selenium click-to-call automation on an iSAFE data-driven framework, with Jenkins and JIRA wired into the Agile STLC. <strong>TeamworkIQ</strong> &mdash; hybrid PyTest and Selenium suites for employee management software, executed through Azure Pipelines.</p>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section id="work">
-      <div class="eyebrow">selected work</div>
-      <h2>A few in more detail</h2>
-
-      <div class="project-card">
-        <div class="project-head">
-          <div class="project-title">AI Chatbot Evaluation Framework</div>
-          <div class="project-badge ai">&#10003; IQVIA</div>
-        </div>
-        <p class="project-desc">An LLM evaluation framework for a production conversational assistant: golden datasets, RAGAS scoring for faithfulness and context relevance, and tracked hallucination rates that a pipeline can fail on. UI automation validates the conversational surface, and a separate track probes prompt-injection and bias by sweeping temperature, confidence thresholds and context memory.</p>
-        <div class="tags"><span>Python</span><span>RAGAS</span><span>DeepEval</span><span>LangSmith</span><span>Prompt engineering</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-head">
-          <div class="project-title">Surgimap &mdash; Globus</div>
-          <div class="project-badge">&#10003; Imaging &amp; simulation</div>
-        </div>
-        <p class="project-desc">Architected a Python, POM-driven automation framework integrated with Squish and BDD, giving acceptance coverage across Windows, macOS and iOS from one suite. Backed it with Jenkins CI across <strong>20 virtual machines</strong> for scheduled regression, so cross-platform feedback arrived every morning instead of every release.</p>
-        <div class="tags"><span>Python</span><span>Squish</span><span>BDD</span><span>Jenkins</span><span>20-VM grid</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-head">
-          <div class="project-title">Power Apps &mdash; Microsoft</div>
-          <div class="project-badge">&#10003; Low-code platform</div>
-        </div>
-        <p class="project-desc">Cypress and Playwright automation spanning web, mobile, Windows and macOS for a low-code application platform. Beyond the suites themselves I governed daily execution, pull-request validation, code reviews and release-readiness calls. That side of the job decides whether automation gets trusted or worked around.</p>
-        <div class="tags"><span>Cypress</span><span>Playwright</span><span>TypeScript</span><span>PR validation</span><span>Code review</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-head">
-          <div class="project-title">Secret Server &mdash; Thycotic (now Delinea)</div>
-          <div class="project-badge">&#10003; Privileged access security</div>
-        </div>
-        <p class="project-desc">Led end-to-end QA automation for web, server and Windows applications on a privileged-account protection product, using POM with C#/.NET, Java and NUnit. Embedded Azure Pipelines into the testing lifecycle so defect detection and quality visibility moved to every commit rather than every milestone.</p>
-        <div class="tags"><span>C#/.NET</span><span>NUnit</span><span>Java</span><span>Azure Pipelines</span></div>
-      </div>
-
-      <p class="also"><strong>Also:</strong> <strong>Tactal</strong> (Icomm Connect) &mdash; Java and Selenium click-to-call automation on an iSAFE data-driven framework, with Jenkins and JIRA wired into the Agile STLC. <strong>TeamworkIQ</strong> &mdash; hybrid PyTest and Selenium suites for employee management software, executed through Azure Pipelines.</p>
     </section>
 
     <section id="recognition">
@@ -560,7 +533,7 @@
           <a href="mailto:zakir9622@gmail.com" class="primary">Email me &rarr;</a>
           <a href="https://linkedin.com/in/zakirz" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/iamzakirzr" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:zakir9622@gmail.com?subject=R%C3%A9sum%C3%A9%20request">Request r&eacute;sum&eacute;</a>
+          <a href="mailto:zakir9622@gmail.com?subject=Resume%20request">Request resume</a>
         </div>
       </div>
       <footer>built by Zakir &middot; hand-written HTML, no framework, no build step</footer>
@@ -572,6 +545,21 @@
 <script>
 // Scroll-spy: marks the nav link for whichever section owns the middle of the viewport.
 // Progressive enhancement only — without JS the links are still plain anchors.
+// Tenure counts from the real start date, so the figure never goes stale.
+// The markup carries "since Mar 2018", which stays true without JavaScript.
+(function () {
+  var el = document.querySelector('[data-since]');
+  if (!el) { return; }
+  var start = new Date(el.getAttribute('data-since'));
+  if (isNaN(start)) { return; }
+  var months = (Date.now() - start.getTime()) / 2629800000;   // mean month in ms
+  if (months < 1) { return; }
+  var years = Math.floor(months / 12);
+  var rest = Math.floor(months % 12);
+  el.textContent = years + (rest >= 6 ? '.5' : '') + ' yrs';
+  el.setAttribute('title', 'since March 2018');
+})();
+
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
   var byId = {};
