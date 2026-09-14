@@ -70,13 +70,17 @@ stacks and the nav moves to a fixed bar at the bottom. Colours are CSS variables
 `:root`, so a palette change is one block.
 
 Sections in `index.html` run in the order they appear on the page: `#about`, `#impact`,
-`#engineering`, `#ai`, `#experience`, `#work`, `#recognition`, `#contact`. The JSON-LD at the bottom repeats
-the same facts, so update both together.
+`#engineering`, `#ai`, `#experience`, `#recognition`, `#contact`. The JSON-LD at the bottom
+repeats the same facts, so update both together.
 
-The hero panel shows the shape of the suite, not results. IQVIA, Mindtree and Indium are
-employers and belong in the experience section; the strip under the hero is for products
-I tested, which is a different list. Any number that goes on
-this page has to be one I can back when someone asks how I measured it.
+Work is organised by company, not by product. Each project card sits inside the employer
+block it belongs to, so nothing floats loose — IQVIA, Mindtree and Indium are employers,
+the products underneath them are what I tested there. Any number that goes on this page has
+to be one I can back when someone asks how I measured it.
+
+The years-of-experience tile carries `data-since="2018-03-01"` and a short script works the
+figure out at load. The text in the markup is the fallback for anyone without JavaScript, so
+it reads `since Mar 2018` and stays true on its own — don't put a number there.
 
 No phone number, no address, no CV to download. The page is public and gets crawled, so
 contact runs through email.
