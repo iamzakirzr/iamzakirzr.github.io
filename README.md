@@ -90,6 +90,14 @@ fill's own colour rather than a flat grey, which keeps the state readable across
 bar. Stat values are set in Inter, not Space Grotesk — a display face on a number reads as
 decoration.
 
+Two repositories are linked inline: AgenticAIEvaluations under the AI section, CypressTest
+under the engineering one. They are there because a hiring manager reading an SDET page
+wants something they can open, and the rest of the page is my word for it. Only link repos
+that stand up to being opened — Playwright-ZR is a one-commit stub, so it stays off, and
+the audit fails the build if it ever gets linked. Numbers quoted from a repo's own README
+(the 411 tests) are allowed only while that repo is still linked, which the audit also
+checks.
+
 The years-of-experience tile carries `data-since="2018-03-01"` and a short script works the
 figure out at load. The text in the markup is the fallback for anyone without JavaScript, so
 it reads `since Mar 2018` and stays true on its own — don't put a number there.
