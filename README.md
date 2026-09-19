@@ -65,47 +65,56 @@ sitemap.xml
 
 ### Notes to self
 
-Two columns above 1024px, sticky left column beside the scrolling content. Under that it
-stacks and the nav moves to a fixed bar at the bottom. Colours are CSS variables on
-`:root`, so a palette change is one block.
+A sticky status rail at the top carries availability, the current role and the nav; below
+it the page is full-width sections inside one `.wrap` container. Under 720px the rail goes
+static and the nav detaches to a fixed bottom bar — give its links a 44px min-height and
+keep the labels short enough that six of them stay on one row at 390px. Colours are CSS
+variables on `:root`, so a palette change is one block.
 
-Sections in `index.html` run in the order they appear on the page: `#about`, `#impact`,
-`#engineering`, `#ai`, `#experience`, `#recognition`, `#contact`. The JSON-LD at the bottom
-repeats the same facts, so update both together.
+Sections in `index.html` run in the order they appear: `#top`, `#about`, `#stack`, `#ai`,
+`#experience`, `#recognition`, `#contact`. The nav shows six of those (`#top` is the logo
+target). The JSON-LD at the bottom repeats the same facts, so update both together.
+
+Type is Space Grotesk for display, IBM Plex Sans for body, JetBrains Mono for every number
+and label. Only 400/500/600 of Plex are loaded, so nothing may ask for 700 — `strong` is
+pinned to 600 for exactly that reason.
 
 Work is organised by company, not by product. Each project card sits inside the employer
-block it belongs to, so nothing floats loose — IQVIA, Mindtree and Indium are employers,
-the products underneath them are what I tested there. Every card carries at least two
-bullets and its own stack; a card that is only a title is not worth the space. The
-"selected work" chips at the top of that section are the shortcut straight to them, so
-every chip has to point at a card that exists. Any number that goes on this page has to be
-one I can back when someone asks how I measured it.
+block it belongs to — IQVIA, Mindtree and Indium are employers, the products underneath
+them are what I tested there. Every card carries at least two bullets and its own stack; a
+card that is only a title is not worth the space. The project grid is `auto-fit`, never a
+fixed track count, or a company with one project strands it in a third of the row. The
+"selected work" chips are the shortcut straight to them, so every chip has to point at a
+card that exists.
 
 Page Object Model, BDD and iSAFE are framework *designs*, not tools. They live in prose and
-in the Design row of the skill matrix — never chipped in a tag list beside Selenium.
+in the Design row of the stack table — never chipped in a tag list beside Selenium.
 
-The impact section has exactly one hero figure and everything else is a smaller stat tile,
-so there is one number the eye lands on first. Meter tracks are a translucent step of the
-fill's own colour rather than a flat grey, which keeps the state readable across the whole
-bar. Stat values are set in Inter, not Space Grotesk — a display face on a number reads as
-decoration.
+The coverage matrix carries meaning in a glyph, so every cell also has visually-hidden text
+and the "not applicable" mark stays above 3:1. `.sr` is absolutely positioned, which is why
+`.matrix-scroll` must stay `position: relative` — otherwise the hidden spans escape the
+scroll container and widen the whole page.
 
-Two repositories are linked inline: AgenticAIEvaluations under the AI section, CypressTest
-under the engineering one. They are there because a hiring manager reading an SDET page
-wants something they can open, and the rest of the page is my word for it. Only link repos
-that stand up to being opened — Playwright-ZR is a one-commit stub, so it stays off, and
-the audit fails the build if it ever gets linked. Numbers quoted from a repo's own README
-(the 411 tests) are allowed only while that repo is still linked, which the audit also
-checks.
+Awards name the company I was at when they were given, derived from the tenure ranges in
+the experience section. The audit fails if a dated award names a company whose range does
+not contain it. An award whose date is in doubt shows `—` in both columns rather than an
+attribution I cannot stand behind.
+
+Two repositories are linked inline: AgenticAIEvaluations in the hero, CypressTest under the
+stack section. Only link repos that stand up to being opened — Playwright-ZR is a one-commit
+stub, so it stays off, and the audit fails if it is ever linked. Numbers quoted from a
+repo's own README (the 411 tests) are allowed only while that repo is still linked.
 
 The years-of-experience tile carries `data-since="2018-03-01"` and a short script works the
 figure out at load. The text in the markup is the fallback for anyone without JavaScript, so
-it reads `since Mar 2018` and stays true on its own — don't put a number there.
+it reads `since Mar 2018` and stays true on its own — don't put a number there. It wears
+`.is-fallback` to stop that longer string wrapping in its cell; the script drops the class
+once the short figure replaces it.
 
 No phone number, no address, no CV to download. The page is public and gets crawled, so
 contact runs through email.
 
-The avatar is a square crop rendered as an 88px circle, so keep the face centred and export
-at 352px or better. `assets/og-image.png` is the LinkedIn preview at 1200x630; LinkedIn
+The avatar is a square crop rendered as a 62px circle beside the eyebrow, so keep the face
+centred and export at 256px or better. `assets/og-image.png` is the LinkedIn preview at 1200x630; LinkedIn
 caches it hard, so run any replacement through Post Inspector before sharing the link
 again.
